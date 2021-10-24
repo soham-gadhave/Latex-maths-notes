@@ -1,0 +1,1343 @@
+\documentclass[a4paper, titlepage]{article}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, mathtools}
+\usepackage[margin=1in]{geometry}
+
+\hyphenation{Order}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\title{Differential Equations}
+\author{Soham Gadhave}
+\date{$1^{st}$ September 2021}
+
+\begin{document}
+\maketitle
+\section{Ordinary Differential Equation}
+
+\begin{definition}
+    A differential Equation which contains one dependent variable 
+    and one independent variable is called ODE.
+\end{definition}
+    \begin{center}
+        \begin{tabular}{l r}
+             1. $ \dfrac{dy}{dx} + y = x$ & 2. $ \dfrac{d^2y}{dx^2} + y = x^3$ \\ \\
+             3. $ \dfrac{dz}{dx} + z = x$ & 
+        \end{tabular}
+    \end{center}
+    \textbf{Order of a Differential Equations:-} The order of a differential equation is the highest order derivative appearing in the given differential equations.
+    \begin{tabbing}
+    \textbf{Ex:}\hspace{1em}\= 1. $ \dfrac{d^2y}{dx^2} + y = x$, \hspace{30pt}\=\hspace{30pt}\= order = 2  \\ \\
+        \> 2. $ \dfrac{d^2y}{dx^2} + \left( \dfrac{dy}{dx} \right)^3 + y = x^2$, \> \> order = 2  \\ \\
+        \> 3. $ \dfrac{dy}{dx} + y = \dfrac{d^3y}{dx^3} $ \> \> order = 3
+    \end{tabbing}
+    \textbf{Note:} Order of a differential equation always exists and is a unique positive integer
+    
+    \medskip
+    \noindent\textbf{Degree of a differential equation:-} Highest power of the highest order derivative is called the degree of the differential equation, provided it is free from radicals and fractions.
+    Ex:
+    \begin{tabbing}
+        \textbf{Ex:}\hspace{1em}\= 1. $ \dfrac{d^2y}{dx^2} + \left( \dfrac{dy}{dx} \right)^3 + y = x + \sin x $ \hspace{2em}\= order = 2, degree = 1. \\ \\
+        \> 2. $\left[ 1 + \left( \dfrac{dy}{dx} \right)^2 \right]^{1/3} = a\dfrac{d^2y}{dx^2}$ \\ \\
+        \> \hspace{1em} i.e $1 + \left( \dfrac{dy}{dx} \right)^2 = a^3 \left( \dfrac{d^2y}{dx^2} \right)^3$ \> order = 2, degree = 3. \\ \\
+        \> 3. $ \left( \dfrac{d^2y}{dx^2} \right)^5 = \left( \dfrac{d^2y}{dx^2} \right)^7 $ \> order = 2, degree = 7 \\ \\
+    \end{tabbing}
+    \textbf{Note:}
+    \begin{enumerate}[label=\roman*, leftmargin=3em]
+        \item For degree of a differential equation, the D.E mut be a 
+        polynomial in its derivative.
+        \item The degree of a differential equation may or may not exist.
+    \end{enumerate}
+    \begin{tabbing}
+        \textbf{Ex:} \= 1. $ \dfrac{dy}{dx} + y = \sin \left( \dfrac{dy}{dx} \right) $ \\
+            \> order = 1 \\
+            \> but the degree is not defined ($\because$ it is not a polynomial 
+            in its detivative) \\ \\
+            \> 2. $ \dfrac{d^2y}{dx^2} + y = e^{\nicefrac{d^2y}{dx^2}} $ \\
+            \> order = 2 \\
+            \> but the degree is not defined ($\because$ it is not a polynomial
+            in its derivative) \\
+            \> 3. $ \dfrac{d^2y}{dx^2} + y = e^{\nicefrac{dy}{dx}} $ 
+    \end{tabbing}
+    \newpage
+    \noindent\textbf{Linear Differential Equation:-}
+    \begin{tabbing}
+        \hspace*{1em}\= For Linear Differential Equation \\
+        \> 1. The dependent varible and its derivative should not be 
+        multiplied to each other. \\
+        \> 2. The degree of the dependent variable and all its derivative
+        be 1.  
+    \end{tabbing}
+    \begin{tabbing}
+        \textbf{Ex:}\hspace{1em}\= i.  $ y\dfrac{dy}{dx} + y = x $ \hspace{4em}\= $ \longrightarrow \hspace{1em} $ non-linear. \\ \\
+        \> ii.  $ x\dfrac{dy}{dx} + y = x^2$ \> $ \longrightarrow \hspace{1em} $ linear \\ \\
+        \> iii. $ \dfrac{d^2y}{dx^2} + x\dfrac{dy}{dx} + y = x^2 $ \> $ \longrightarrow \hspace{1em} $ linear \\ \\
+        \> iv.  $ \dfrac{dy}{dx} + y^2 = x^2 $ \> $ \longrightarrow \hspace{1em} $ non-linear \\ \\
+    \end{tabbing}
+    \section{Linear Differential Equation with constant coefficents}
+    \begin{definition}
+        A differential equation in of the form
+        $$
+            a_0\dfrac{d^ny}{dx^n} + a_1\dfrac{d^{n-1}y}{dx^{n-1}} + 
+            a_2\dfrac{d^{n-2}y}{dx^{n-2}} + \cdots + a_ny = X
+        $$
+        i.e
+        \begin{equation}\label{general_lde}
+            \left(a_0D^n + a_1D^{n-1} + a_2D_{n-2} + \cdots + a_n\right)y = X
+        \end{equation}
+        where $ D = \dfrac{d}{dx} $ and $ a_0, a_1, a_2, \cdots, a_n $ are all constants
+        and $X$ is a function of only $x$ or a constant is called L.D.E with constant coefficents.
+    \end{definition}
+    The required solution is 
+    \begin{center}
+        $ y =  $ C.F + P.I $( = y_c + y_p)$
+    \end{center}
+    C.F $\rightarrow$ Complementary function, P.I $\rightarrow$ Particular Integral.
+    \textbf{If $X$ = 0} Then equation (\ref{general_lde}) becomes
+    \begin{equation}\label{homogenous_general_lde}
+        \left( a_0D^n + a_1D^{n-1} + a_2D^{n-2} + \cdots + a_n \right)y = 0
+    \end{equation}
+    which is called the homogenous L.D.E with constant coefficients.  
+    \begin{center}
+        \begin{tabularx}{\linewidth}{c|X}
+            \begin{minipage}[t]{0.6\linewidth}
+                The required solution is.
+                \begin{center}
+                    $ y = \text{C.F} $ $ ( = y_c ) $
+                \end{center}
+                let y = $e^{mx}$ be the solution of equation (\ref{homogenous_general_lde}) \\
+                $ \therefore $ Equation (\ref{homogenous_general_lde}) becomes \\
+                $ 
+                (a_0m^n + a_1m^{n-1} + a_2m^{n-2} + \cdots + a_n)e^{mx} = 0
+                \hspace{2pt} (\because e^{mx} \neq 0) 
+                $ \\
+                $ \implies a_0m^n + a_1m^{n-1} + a_2m^{n-2} + \cdots + a_n = 0 $ \null\hfill --- (3) \\
+                which is called the auxillary equation. 
+            \end{minipage}
+            &
+            \begin{minipage}[t]{0.4\linewidth}
+                $
+                    \begin{aligned}[t]
+                        (D - m)y &= 0 \\
+                        \dfrac{dy}{dx} &= 0 \\
+                        \dfrac{dy}{y} &= mdx \\
+                        \log y &= mx + \log c \\
+                        \Aboxed{y &= ce^{mx}}
+                    \end{aligned}
+                $ \\
+            \end{minipage}
+        \end{tabularx}
+    \end{center}
+    \begin{tabularx}{\linewidth}{c|cX}
+        \begin{minipage}[c]{0.5\linewidth}
+            \begin{tabbing}
+                Case I: \= Roots are real and distinct: Let \\ 
+                \> $ m = m_1, m_2 $  be the roots (say)
+                Then $ y = \text{C.F} $ \\ 
+                \>
+                 $ = c_1e^{m_1x} + c_2e^{m_2x} $ \\
+            \end{tabbing} 
+        \end{minipage}
+        &
+        \begin{minipage}[t]{0.5\linewidth}
+            $
+                \begin{aligned}
+                    D(e^{mx}) &= me^{mx} \\
+                    D^2(e^{mx}) &= m^2e^{mx} \\
+                    & \vdots \\
+                    D^n(e^{mx}) &= m^ne^{mx} \\
+                \end{aligned}
+            $
+        \end{minipage}    
+    \end{tabularx}
+    \newpage
+    \setlength{\fboxsep}{1em}
+    \noindent\fbox{
+        \begin{minipage}{0.935\linewidth}
+            \textbf{Principle of Superposition:}
+            \begin{enumerate}[label=\arabic*]
+                \item If $ y_1, y_2 $ be two solutions of a homogenous differential 
+                equation with constant coefficents, then their linear combination 
+                $ c_1y_1 + c_2y_2 $ is also a solution of that differential equation
+                \item Let $ y_1, y_2, \cdots, y_n $ be n solutions of a homogenous L.D.E
+                with constant coefficents, then their linear combination $ c_1y_1 + 
+                c_2y_2 + \cdots + c_ny_n $ is also the solution of that L.D.E.
+            \end{enumerate}
+        \end{minipage}
+    } \\ \\
+
+    $ \therefore $ In general let $ m = m_1, m_2, \cdots, m_n $ be the roots
+    of the auxillary equation of a homogenous L.D.E with constant coefficents, 
+    then
+    $$ y = \text{C.F} = c_1e^{m_1x} + c_2e^{m_2x} + \cdots + c_ne^{m_nx} $$
+    \begin{tabularx}{\linewidth}{c l}
+        \textbf{Ex:} & Solve 
+        $ (D^2 - 5D + 6)y = 0 \left( D = \dfrac{d}{dx} \right) $ \\
+        \textbf{Soln: } 
+        & The Auxilary Equation is \\
+        \hfill 
+        &
+        $
+            \begin{aligned}[t]
+                & m^2 - 5m + 6 &= 0 \\
+                & \implies (m-2)(m-3) &= 0 \\
+                & \implies m = 2, 3 \\
+            \end{aligned}
+        $ \\
+        \hfill 
+        &
+        $ \therefore y = \text{C.F} = c_1e^{2x} + c_2e^{3x} \text{is the 
+        required solution} $ \\
+    \end{tabularx}
+    \begin{tabularx}{\linewidth}{c l}
+        \\
+        \textbf{Ex:} & If $ y = ae^{2x} + be^{3x} $, form its D.E \\
+        \textbf{Soln: } 
+        &
+        $
+            \begin{aligned}[t]
+                (D-2)(D-3)y &= 0 \\
+                (D^2 -5D + 6)y &= 0 \\
+                \dfrac{d^2y}{dx^2} - 5\dfrac{dy}{dx} + 6y &= 0 \\ \\
+            \end{aligned}
+        $
+    \end{tabularx}
+    \underline{\textbf{Note:}} All constants are present in the C.F, the P.I
+    dosen't contain any constant. \hfill \\
+    \begin{center}
+        \date{$6^{\text{th}}$ September 2021}
+    \end{center}
+    \begin{enumerate}[label = \textbf{Case \arabic*:-}]
+        \item Roots are Real and distinct.
+        \item Roots are Real and repeated. \hfill \\
+        Say $ m, m $ are the real repeated roots, then
+        $ \text{C.F} = (c_1 + c_2x)e^{mx} $
+        \item[\textbf{Expln:-}] Then
+        \setcounter{equation}{0}
+        \begin{align}
+            \notag & \notag (D-m)^2y = 0 \notag \\
+            \implies & (D-m)(D-m)y = 0 \\
+            & \text{Let} (D-m)y = u
+        \end{align} 
+        $\text{Then eqn (\ref{eqn1}) becomes}$
+        \begin{align}
+            & (D-m)u = 0 \notag \notag \\
+            \implies & \dfrac{du}{dx} - mu = 0 \notag \\
+            \implies & \dfrac{du}{u} = mdx \notag \\
+            \implies & \log u = mx + \log c \notag \\
+            \implies & u = c_2e^{mx} \notag
+        \end{align}
+        Put the value of $u$ in equation (\ref{eqn2})
+        \begin{align}
+            \therefore & (D-m)y = c_2e^{mx} \notag \\
+            \implies & \dfrac{dy}{dx} - my = c_2e^{mx} \notag
+        \end{align}
+        which is of the form $\dfrac{dy}{dx} + Py = Q$, 
+        therefore the  I.F $= e^{\int Pdx} = e^{\int -mdx} = e^{-mx}$ \hfil \\
+        Therefore the required solution is
+        \begin{align*}
+            y(\text{I.F}) &= \displaystyle\int Q(I.F)dx + \text{constant} \\
+            ye^{-mx} &= \displaystyle\int (c_2e^{mx})e^{-mx}dx + c_1 \\
+            ye^{-mx} &= c_2x + c_1 \\
+            \Aboxed{y &= (c_1 + c_2x)e^{mx}}
+        \end{align*}
+        In general if $n$ roots are repeated, then 
+        \[ \boxed{\text{C.F} = (c_1 + c_2x + \cdots + c_nx^{n-1})e^{mx}} \]
+        \textbf{Ex.  } Solve $(D^2 - 2D + 1)y = 0$ \hfill \\
+        \textbf{Soln:} The A.E is
+        \begin{align*}
+            & m^2 - 2m + 1 = 0 \\
+            \implies & (m-1)^2 = 0 \\
+            \implies & m = 1, 1 \\
+            \therefore \quad & y = \text{C.F} = (c_1 + c_2x)e^x
+        \end{align*}
+        is the required solution. \hfill \\
+        \textbf{Ex.  } Solve $(D^2 - 5D + 6)(D^2 - 4D + 4)y = 0$ \hfill \\
+        \textbf{Soln:} The A.E is \hfill
+        \begin{align*}
+            & \implies (m^2 - 5m + 6)(m^2 - 4m + 4)y = 0 \\
+            & \implies m = 2, 2, 2, 3 \\
+            & \quad \therefore \;\; y = \text{C.F} = (c_1 + c_2x + c_3x^2)e^{2x} + e^{3x} &
+        \end{align*}
+        \item Roots are imaginary.
+            \[ \text{say } m = \alpha \pm \iota\beta \]
+            \begin{align*}
+                \text{C.F} & = e^{\Re(m)x}(\cos (|\Im(m)|x) + \sin (|\Im(m)|x) ) \\
+                \Aboxed{\text{C.F} & = e^{\alpha x}(c_1\cos \beta x + c_2\sin \beta x )}
+            \end{align*}
+            \begin{enumerate}[label=\textbf{Ex \#\arabic*}]
+                \item $(D^2 + 2D + 2)y = 0$
+                \item[\textbf{Soln:.}] The A.E is
+                \begin{flalign*}
+                    & \implies m^2 + 2m + 2 = 0 & \\
+                    & \implies m^2 + 2m + 1 + 1 = 0 & \\
+                    & \implies (m + 1)^2 + 1 = 0  & \\
+                    & \implies (m + 1)^2 = -1  & \\
+                    & \implies m + 1 = \pm\iota  & \\
+                    & \implies m = -1 \pm\iota  & \\
+                \end{flalign*}
+                \item[] $y = \text{C.F} = e^{-1}x(c_1\cos x + c_2 \sin ax)$ 
+                \item $(D^2 + 2D + 2)^2y = 0$
+                \item[\textbf{Soln:.}] The A.E is
+                \begin{flalign*}
+                    & \implies (m^2 + 2m + 2)^2 = 0 & \\
+                    & \implies m^2 + 2m + 1 + 1 = 0 & \quad\text{(Twice)} \\
+                    & \implies (m + 1)^2 + 1 = 0  & \quad\text{(Twice)} \\
+                    & \implies (m + 1)^2 = -1  & \quad\text{(Twice)} \\
+                    & \implies m + 1 = \pm\iota  & \\
+                    & \implies m = -1 \pm\iota, -1 \pm\iota  & \\
+                \end{flalign*} 
+                $ y = \text{C.F} = e^{-x}\left( (c_1 + c_2x)\cos x + (c_3 + c_4x) \sin x \right) $
+                \item Find the order of the differential equation 
+                whose one root is $x^2\sin x$.
+                \item[\textbf{Soln:.}] Let C.F of the differential equation be 
+                $$e^{\alpha x}\left[ (c_1 + c_2x + c_3x^2)\cos x + (c_4 + c_5x + c_6x^2)\sin x \right]$$
+                since the order of the differential equation is equal to
+                the number of the arbitrary constants, therefore order $=6$. \hfill \\
+                \textbf{Note: } If $m = \alpha \pm \beta$, then
+                \begin{align*}
+                    \text{C.F} &= c_1e^{(\alpha + \beta)x} + c_2e^{(\alpha - \beta)x} \\
+                    \text{or C.F} &= c_1\cosh\beta x + c_2\sinh\beta x
+                \end{align*}
+                \item $(D^2 + 2D - 2)^2y = 0$
+                \item[\textbf{Soln:.}] The A.E is
+                \begin{flalign*}
+                    & \implies (m^2 + 2m - 2)^2 = 0 & \\
+                    & \implies m^2 + 2m + 1 - 3 = 0 &  \\
+                    & \implies (m + 1)^2 - 3 = 0  &  \\
+                    & \implies (m + 1)^2 = 3  &  \\
+                    & \implies m + 1 = \pm\sqrt{3}  & \\
+                    & \implies m = -1 \pm\sqrt{3}
+                \end{flalign*} 
+                $ y = \text{C.F} = e^{-x}\left( c_1\cosh(\sqrt{3}x) + c_2\sinh(\sqrt{3}x) \right) $
+                 
+            \end{enumerate}
+    \end{enumerate}
+    \subsection{Particular Integral}
+        The Equation $(\ref{general_lde})$ can be written as 
+        $$ F(D)y = X $$
+        \subsubsection{\textbf{Properties:}}
+        \begin{enumerate}[label=\textbf{\Roman*}]
+
+            \item \textbf{When $X$ is of the form $e^{ax}$ provided $F(a) \neq 0$ \hfill }
+            \begin{flalign*}
+                \text{Then P.I} &= \dfrac{1}{F(D)}X & \\
+                                &= \dfrac{1}{F(D)}e^{ax} & \\
+                                &= \dfrac{1}{F(a)}e^{ax} \quad (F(a) \neq 0) & \\
+            \end{flalign*}
+            \begin{flalign*}
+                \textbf{Expln:} \quad D(e^{ax}) &= D(e^{ax}) & \\
+                D^2(e^{ax}) &= a^2(e^{ax}) & \\  
+                & \vdots & \\
+                D^n(e^{ax}) &= a^n(e^{ax}) & \\ 
+                \therefore F(D)e^{ax} &= F(a)e^{ax} \\
+                \implies \dfrac{1}{F(D)}e^{ax} &= \dfrac{1}{F(a)}e^{ax}, \;
+                \text{provided F(a)} \neq 0
+            \end{flalign*}
+            \textbf{Ex:-} $(D^2 - 5D + 6)y = e^{5x}, \; 
+            \left(D = \dfrac{d}{dx}\right)$ \hfill \\
+            \textbf{Soln:- } The A.E is 
+            \begin{align*}
+                m^2 -5m + 6 &= 0 \\
+                (m-2)(m-3) &= 0 \\
+                m &= 2, 3 \\
+                \therefore \text{C.F} &= c_1e^{2x} + c_2e^{3x} \\
+            \end{align*}
+            Now  the P.I
+            \begin{align*}
+                \text{P.I} &= \dfrac{1}{F(D)}e^{5x} \\
+                           &= \dfrac{1}{D- 2)(D - 3)}e^{5x}  \\
+                           &= \dfrac{1}{(5-2)(5-3)}e^{5x} \\
+                           &= \dfrac{e^{5x}}{6} \\
+            \end{align*}
+            Hence the solution is
+            \[ y = c_1e^{2x} + c_2e^{3x} + \dfrac{e^{5x}}{6} \]
+            
+            \item \textbf{When $X$ is of the form $e^{ax}$ provided $F(a) = 0$ \hfill }
+            \begin{flalign*}
+                \text{Then P.I} &= \dfrac{1}{F(D)}X & \\
+                                &= \dfrac{1}{F(D)}e^{ax} & \\
+                                &= \dfrac{1}{(D-a)^r}e^{ax} & \\ 
+                                &= \dfrac{x^r}{r!}e^{ax} &
+            \end{flalign*}
+            \textbf{Ex: } $(D^2 -4D + 4)y = e^{2x}$
+            $\left(D = \dfrac{d}{dx}\right)$ \hfill \\
+            \textbf{Soln: }A.E is $m^2 -4m + 4 = 0 \implies m = 2, 2 $ 
+            \[ \therefore \text{C.F} = (c_1 + c_2x)e^{2x} \]
+            For P.I
+            \begin{align*}
+                \text{P.I} &= \dfrac{1}{F(D)}e^{2x} \\
+                  &= \dfrac{1}{(D-2)^2}e^{2x}
+            \end{align*}
+            Since $F(a) = F(2) = 0$, there are two ways to do this \hfill \\
+            \begin{tabularx}{\linewidth}{X | c}
+                \textbf{Formula based} & 
+                \textbf{Differentiate and multiply by x till }
+                $F(a) \ne 0$ \\
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            \text{P.I} &= \dfrac{x^r}{r!}e^{ax} \\
+                                       &= \dfrac{x^2}{2!}e^{2x} \\
+                                       &= \dfrac{x^2}{2}e^{2x}
+                        \end{align*}
+                    }
+                \end{minipage}
+                & 
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            \text{P.I} &= \dfrac{1}{F(D)}e^{2x} \\
+                                       &= \dfrac{1}{(D^2 - 4D + 4)}e^{2x} \\
+                                       &= x\left(\dfrac{1}{2D - 4}\right)e^{2x} \\
+                                       &= x^2\left(\dfrac{1}{2}\right)e^{2x} \\
+                                       &= \dfrac{x^2}{2}e^{2x}
+                        \end{align*}
+                    }
+                \end{minipage}
+            \end{tabularx}
+            $\therefore y = (c_1 + c_2x)e^{2x} + \dfrac{x^2}{2}e^{2x}$ \hfill \\
+                        
+            \textbf{Ex: } $(D^2 -5D + 6)y = e^{3x}$
+            $\left(D = \dfrac{d}{dx}\right)$ \hfill \\
+            \textbf{Soln: }A.E is $m^2 -5m + 6 = 0 \implies m = 2, 2 $
+            \[ \therefore \text{C.F} = c_1e^{2x} + c_2e^{3x} \]
+            \[
+            \text{For P.I} = \dfrac{1}{F(D)}e^{2x} 
+                = \dfrac{1}{(D-2)(D-3)}e^{2x}
+            \]
+            Since $F(a) = F(3) = 0$, there are two ways to do this \hfill \\
+            \begin{tabularx}{\linewidth}{X | c}
+                \textbf{Formula based} & 
+                \textbf{Differentiate and multiply by x till }
+                $F(a) \ne 0$ \\
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            \text{P.I} &= \dfrac{1}{F(D-2)(D-3)}e^{3x} \\
+                                       &= \dfrac{1}{(D-3)} \left(\dfrac{1}{(D-2)}e^{3x}\right) \\
+                                       &= \dfrac{1}{(D-3)}e^{3x} \\
+                                       &= \dfrac{x}{1!}e^{3x} \\
+                                       &= xe^{3x}
+                        \end{align*}
+                    }
+                \end{minipage}
+                & 
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            \text{P.I} &= \dfrac{1}{F(D)}e^{3x} \\
+                                       &= \dfrac{1}{(D^2 - 5D + 6)}e^{3x} \\
+                                       &= x\left(\dfrac{1}{2D - 5}\right)e^{3x} \\
+                                       &= xe^{3x} 
+                        \end{align*}
+                    }
+                \end{minipage}
+            \end{tabularx}
+            $\therefore y = c_1e^{2x} + c_2e^{2x} + xe^{3x}$ \hfill \\
+
+            \item \textbf{When $X$ is of the form $\sin ax \; \text{or} \; \cos ax$
+            provided $F(-a^2) \neq 0$} \hfill \\
+            \begin{tabularx}{\linewidth}{c | c}
+                \begin{minipage}[c]{0.6\linewidth}
+                    {
+                        \begin{flalign*}
+                            \text{Then P.I } &= \dfrac{1}{F(D)}X & \\
+                                            &= \dfrac{1}{F(D^2)} (\sin ax \; \text{or} \; \cos ax) & \\
+                                            &= \dfrac{1}{F(-a^2)} (\sin ax \; \text{or} \; \cos ax) &
+                        \end{flalign*}
+                    }
+                    (Replace $D^2$ by $-a^2$, $D^4$ by $a^4$, $D^6$ by $-a^6$, $\cdots$)
+                \end{minipage}
+                &
+                \begin{minipage}[c]{0.4\linewidth}
+                    {
+                        \begin{flalign*}
+                            D(\sin ax) &= a(\cos ax) & \\
+                            D^2(\sin ax) &= -a^2(\sin ax) & \\
+                                         & \vdots
+                        \end{flalign*}            
+                    }
+                \end{minipage}
+            \end{tabularx}
+
+            \begin{tabularx}{\linewidth}{X | c}
+                \textbf{Ex:- } $D^2 - 2D + 3 = \sin x \left( D = \dfrac{d}{dx}\right)$
+                &
+                \textbf{Ex:- } $(D^3 + 5D)y = \sin 2x \left( D = \dfrac{d}{dx}\right)$ \\
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            \text{P.I} &= \dfrac{1}{(D^2 - 2D + 3)} \sin x \\
+                                       &= \dfrac{1}{(-1 -2D + 3)} \sin x \\
+                                       &= \dfrac{1}{(2-2D)} \sin x \\
+                                       &= \dfrac{1}{2} \dfrac{1}{(1-D)} \sin x \\
+                                       &= \dfrac{1}{2} \dfrac{(1+D)}{1-D^2} \sin x \\
+                                       &= \dfrac{1}{2} \dfrac{(1+D)}{(1-(-1))} \sin x \\
+                                       &= \dfrac{1}{4}(\sin x + \cos x) \\
+                        \end{align*}
+                    }
+                \end{minipage}
+                &
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            \text{P.I} &= \dfrac{1}{(D^3 + 5D)} \sin x \\
+                                       &= \dfrac{1}{(D^2\cdot D + 5D)} \sin 2x \\
+                                       &= \dfrac{1}{(-4D+5D)} \sin 2x \\
+                                       &= \overbrace{ \dfrac{1}{D} \sin 2x \qquad \dfrac{D}{D^2} \sin 2x } \\
+                                       &= \underbrace{\displaystyle\int \sin 2x \; dx \quad \dfrac{2\cos 2x}{-4}}
+                        \end{align*}
+                    }
+                    \begin{center}
+                        $-\dfrac{1}{2} \cos x$
+                    \end{center}
+                \end{minipage}
+            \end{tabularx}
+
+            \item \textbf{When $X$ is of the form $\sin ax \; \text{or} \; \cos ax$}
+            provided $F(-a^2) = 0$
+
+
+            \begin{tabularx}{\linewidth}{X | c}
+                \textbf{Ex: } $(D^2 + a^2)y = \sin ax$
+                &
+                \textbf{Ex: } $(D^2 + a^2)y = \cos ax$ \\
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            &y &&= \dfrac{1}{(D^2 + a^2)} \sin ax \\
+                            & \hfill &&\text{Differentiate till }F(-a^2) \neq 0 \\
+                            &\hfill &&= x\dfrac{1}{(2D)} \sin ax \\
+                            &\hfill &&= \dfrac{x}{2} \displaystyle\int\sin ax \, dx\\
+                            &\hfill &&= \dfrac{x}{2} \left( -\dfrac{\cos ax}{a} \right) \\
+                            &\hfill &&= -\dfrac{x}{2a}\cos ax
+                        \end{align*}
+                    }
+                \end{minipage}
+                &
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            &y &&= \dfrac{1}{(D^2 + a^2)} \cos ax \\
+                            & \hfill &&\hfill \text{Differentiate till }F(-a^2) \neq 0 \\
+                            &\hfill &&= x\dfrac{1}{(2D)} \cos ax \\
+                            &\hfill &&= \dfrac{x}{2} \displaystyle\int\cos ax \, dx\\
+                            &\hfill &&= \dfrac{x}{2} \left( \dfrac{\sin ax}{a} \right) \\
+                            &\hfill &&= \dfrac{x}{2a}\sin ax
+                        \end{align*}
+                    }
+                \end{minipage}
+            \end{tabularx}
+
+            \begin{center}
+                \date{$7^{\text{th}}$ September 2021}
+            \end{center}
+            \item \textbf{When $X$ is of the form $x^m$} \hfill \\
+            \begin{tabularx}{\linewidth}{c | c}
+                \begin{minipage}[c]{0.5\linewidth}
+                    {
+                        \begin{align*}
+                            \text{Then P.I } &= \dfrac{1}{F(D)}X \\
+                                        &= \dfrac{1}{F(D)}x^m \\
+                                        &= \dfrac{1}{1 \pm G(D)} \\
+                                        &= \left[ 1 \pm G(D) \right]^{-1} x^m
+                        \end{align*}
+                    }
+                    Expand binomially and multiply
+                \end{minipage}
+                &
+                \begin{minipage}[c]{0.5\linewidth}
+                    \textbf{Note: }
+                    \begin{enumerate}[label=\textbf{\arabic*}]
+                        \item $(1+D)^{-1} = 1 - D + D^2 - D^3 + \cdots$
+                        \item $(1-D)^{-1} = 1 + D + D^2 + D^3 + \cdots$
+                        \item $(1+D)^{-2} = 1 - 2D + 3D^2 - 4D^3 + \cdots$
+                        \item $(1-D)^{-2} = 1 + 2D + 3D^2 + 4D^3 + \cdots$
+                        \item $(1+D)^n = 1 + \dfrac{n}{1!}D + \dfrac{n(n-1)}{2!}D^2 + \dfrac{n(n-1)(n-3)}{3!}D^3 + \cdots$
+                    \end{enumerate}    
+                \end{minipage}
+            \end{tabularx}
+            \textbf{Ex: } $(D^2 -2D + 1)y = x^2$ \hfill \\
+            \textbf{Soln:} The A.E is $m^2 -2m + 2 = 0 \implies
+            (m - 1) ^2 + 1 = 0 \implies (m-1)^2 = -1 \implies m = 1 \pm \iota$
+            $\text{C.F} = e^x(c_1\sin x + c_2\cos x)$, and P.I is 
+            given by: 
+            \begin{align*}
+                & \dfrac{1}{F(D)}x^2 \\
+               =& \dfrac{1}{(D^2 - 2D + 2)}x^2 \\
+               =& \dfrac{1}{2\left(1 + \dfrac{D^2 - 2D}{2} \right)}x^2 \\
+               =& \dfrac{1}{2} \left(1 + \left(\dfrac{D^2 - 2D}{2}\right) \right)^{-1}x^2 \\
+               =& \dfrac{1}{2} \left(1 - \left(\dfrac{D^2 - 2D}{2}\right) + \left(\dfrac{D^2 - 2D}{2}\right)^2 + \cdots \right)x^2 \\
+               =& \dfrac{1}{2} \left(1 + D + \dfrac{D^2}{2} + \cdots \right)x^2 \\
+               =& \dfrac{1}{2} \left(x^2 + 2x + 1 \right) \\
+               =& \dfrac{1}{2} \left(x - 1 \right)^2 
+            \end{align*} 
+            Therefore $y = e^x(c_1\sin x + c_2\cos x) + \dfrac{1}{2} \left(x - 1 \right)^2$
+            
+            \item \textbf{When $X$ is of the form $e^{ax}V$ where V is a
+            function of only $x$}. Then
+            \begin{flalign*}
+                \text{P.I} &= \dfrac{1}{F(D)}X & \\
+                &           = \dfrac{1}{F(D)}e^{ax}\cdot V & \\
+                &           = e^{ax}\dfrac{1}{F(D + a)}V &
+            \end{flalign*}
+            \textbf{Ex: } $(D^2 + D + 1)y = e^xx^2$ 
+            \begin{align*}
+                \text{Then P.I} & = \dfrac{1}{D^2 + D + 1}e^xx^2 \\
+                                & = e^x \dfrac{1}{(D+1)^2 + (D+1) + 1}x^2 \\
+                                & = e^x \dfrac{1}{D^2 + 3D + 3}x^2 \\
+                                & = \dfrac{e^x}{3} \left( \dfrac{1}{1 + \left( \dfrac{D^2}{3} + D \right)} \right) x^2 \\
+                                & = \dfrac{e^x}{3} \left( 1 + \left( \dfrac{D^2}{3} + D \right) \right)^{-1} x^2 \\
+                                & = \dfrac{e^x}{3} \left( 1 - \left( \dfrac{D^2}{3} + D \right) + \left( \dfrac{D^2}{3} + D \right)^2 + \cdots \right)^{-1} x^2 \\
+                                & = \dfrac{e^x}{3} \left( 1 - D + \dfrac{2D^2}{3} \right) x^2 \\
+                                & = \dfrac{e^x}{3} \left( x^2 - 2x + \dfrac{4}{3} \right) \\
+            \end{align*}
+            Therefore $y = e^{-x}(c_1\cos \sqrt{3}x + c_2\sin \sqrt{3}x) + \dfrac{e^x}{3} \left( x^2 - 2x + \dfrac{4}{3} \right)$
+            \item \textbf{When X is of the form $x\cdot V$, where $V$ is a function
+            of $x$} \hfill \\
+            Then 
+            \begin{flalign*}
+                \text{P.I} & = \dfrac{1}{F(D)}\cdot X & \\
+                           & = \dfrac{1}{F(D)}(x\cdot V) & \\
+                           & = x\dfrac{1}{F(D)}\cdot V - \dfrac{F'(D)}{F(D)^2}\cdot V &
+            \end{flalign*}
+            \textbf{Ex: } $(D^2 + 2D + 1)y = x\sin x$
+            \begin{align*}
+                \text{Then P.I} &= \dfrac{1}{F(D)}x\sin x \;
+                                 = \; x\dfrac{1}{F(D)}\sin x - \dfrac{F'(D)}{F(D)^2}\sin x \\
+                                &= x\left( \dfrac{1}{D^2 + 2D + 1} \right)\sin x - \left(\dfrac{2D + 2}{(D^2 + 2D + 1)^2} \right) \sin x \\
+                                &= x\left( \dfrac{1}{2D} \right)\sin x - \left(\dfrac{2D + 2}{(-(1^2) + 2D + 1)^2} \right) \sin x \\
+                                &= \dfrac{x}{2}\displaystyle\int \sin x dx - \dfrac{2}{4D^2}(\cos x + \sin x) \\
+                                &= -\dfrac{x}{2}\cos x - \dfrac{1}{-2(1)^2}(\cos x + \sin x) \\
+                                &= \dfrac{1}{2}(\cos x + \sin x) - \dfrac{x}{2}\cos x
+            \end{align*}
+            \item $\dfrac{1}{(D-a)}X = e^{ax}\displaystyle\int Xe^{-ax}dx$
+            \item[\textbf{Expln: }] Let
+            \begin{align*}
+                \dfrac{1}{(D-a)}X & = u \\
+                \implies (D-a)u & = X \\
+                \implies \dfrac{du}{dx} - au & = X \\
+            \end{align*}
+            therefore the I.F = $e^{\int -adx} = e^{-ax} \implies
+            ue^{-ax} = \displaystyle\int\ Xe^{-ax} dx \implies
+            \boxed{\dfrac{1}{(D-a)}X = e^{ax} \displaystyle\int\ Xe^{-ax} dx} $
+        \end{enumerate}
+    
+    \subsection{Variation of parameters: }
+    \textbf{Ex: }$(D^2 - 3D + 2)y = e^{3x} \quad \left( D = \dfrac{d}{dx} \right)$ \hfill \\
+    \textbf{Soln: }The A.E is given by $m^2 - 3m + 2 = 0 \implies
+    m = 2,3$. Therefore the C.F is given by
+    \[ \text{C.F} = c_1e^{x} + c_2e^{2x} \]
+    Let $y = u_1y_1 + u_2y_2$ be a solutionof the given differential 
+    equation. Then \[ 
+        u_1 = \displaystyle\int \dfrac{-y_2R}{W} dx \qquad
+        u_2 = \displaystyle\int \dfrac{y_1R}{W} dx
+    \] where \( W = 
+        \begin{vmatrix}
+            y_1 & y_2 \\
+            y'_1 & y'_2         
+        \end{vmatrix} 
+    \) and in this case $ R = e^{3x}$. Therefore 
+    $
+        W = \begin{vmatrix}
+                e^{x} & e^{2x} \\
+                2e^{x} & 3e^{2x}
+            \end{vmatrix} = e^{3x} 
+    $ 
+    and 
+    \begin{align*}
+        u_1 &= \displaystyle\int \dfrac{-y_2R}{W} dx &
+        u_2 &= \displaystyle\int \dfrac{y_1R}{W} dx \\
+            &= \displaystyle\int \dfrac{-e^{2x}e^{3x}}{e^{3x}} dx &
+            &= \displaystyle\int \dfrac{e^{x}e^{3x}}{e^{3x}} dx \\
+            &= -\dfrac{e^{2x}}{2} & &=e^x \\
+        \end{align*}
+    Therefore $y = -\left( \dfrac{e^{2x}}{2} \right)e^x + e^xe^{2x} = \dfrac{e^{3x}}{2}$
+
+\section{Homogeneous L.D.E with variable coefficients (Cauchy-Euler Equation) }
+    \begin{definition}
+        A differential equation of the form
+        \[ a_0x^n\dfrac{d^ny}{dx^n} + a_1x^{n-1}\dfrac{d^{n-1}y}{dx^{n-1}} + \cdots + a_ny = X \]
+        that is $$a_nx^nD^n + a_{n-1}x_{n-1}D^{n-1} + \cdots + a_ny = X$$ is called
+        homogenous linear differential equation with variable coefficients
+        or Cauchy-Euler's Equation, where $a_0, a_1, \cdots, a_n$ are all
+        constants and $X$ is a function of only $x$ or a constant.
+    \end{definition}
+    Put $x = e^z$, then (The D on the left is $\dfrac{d}{dx}$ and D
+    on the right is $\dfrac{d}{dz}$)
+    \begin{align*}
+        x\dfrac{dy}{dx} &= \dfrac{dy}{dz} &
+        x^2\dfrac{d^2y}{dx^2} &= \dfrac{d^2y}{dz^2} - \dfrac{dy}{dz} \\
+        xD &= D & xD^2 &= D(D-1)
+    \end{align*}
+    Therefore the pattern is $$x^nD^n = D(D-1)(D-2)\cdots(D-\overline{n-1})$$
+    Similarly for $$a_n(ax+b)^nD^n + a_{n-1}(ax+b)^{n-1}D^{n-1} + \cdots + a_ny = X$$
+    putting $ax + b = e^z$, we get $$(ax + b)^nD^n = a^nD(D-1)(D-2)\cdots(D-\overline{n-1}) $$
+
+\section{Orthogonal Trajectory}
+    \subsection{Angle between two curves}
+        Angle between two curves is the angle between their tangents
+        at the common point of intersection. If $\theta$ is the 
+        angle between the two curves, then
+        $$\tan\theta = \dfrac{m_1 - m_2}{1 + m_1m_2}$$ where $m_1$ and
+        $m_2$ are the slopes of the tangent to the curves at the point of
+        intersection. For $\theta = \dfrac{\pi}{2}, 1 + m_1m_2 = 0 
+        \implies m_1m_2 = -1$ \[ \left(\dfrac{dy}{dx}\right)_I\left(
+        \dfrac{dy}{dx}\right)_{II} = -1 \]
+        Two curves intersect orthogonally iff product of their slopes
+        is -1 at all points of intersection.
+        \subsubsection{Cartesian Form}
+        \[ y = f(x) \text{ or } f(x,y) = c \]
+        \textbf{Steps}
+        \begin{enumerate}[label=\textbf{\arabic*}]
+            \item Find $\dfrac{dy}{dx}.$
+            \item Eliminate the constant.
+            \item Replace $\dfrac{dy}{dx}$ by $-\dfrac{dx}{dy}$
+        \end{enumerate}
+        \subsubsection{Polar Form}
+        \[ r = f(\theta) \text{ or } f(\theta,r) = c \]
+        \textbf{Steps}
+        \begin{enumerate}[label=\textbf{\arabic*}]
+            \item Find $\dfrac{dr}{d\theta}.$
+            \item Eliminate the constant.
+            \item Replace $\dfrac{dr}{d\theta}$ by $-r^2\dfrac{d\theta}{dr}$
+        \end{enumerate}
+        \textbf{Note: }If the constant is only multiplied then take
+        $\log$ on both the sides and differentiate for ease.
+        \subsubsection{Some standard results}
+        \begin{enumerate}
+            \item $r = a(1+\cos \theta) \rightleftarrows r = b(1 - \sin \theta)$
+            \item $r^n = a^n\cos \theta \rightleftarrows r = b^n\sin \theta$
+            \item $r^n\cos \theta = a^n \rightleftarrows r^n\sin \theta = b^n$
+            \item $r = a\theta \rightleftarrows r = be^{-\frac{\theta^2}{2}}$
+        \end{enumerate}
+
+        \section{Differential Equation of Ist order and Ist degree}
+        Every differential equation of Ist order and Ist degree can be solved by either by exact or integrating factor.
+        \subsection{Exact Differential Equation}
+        \begin{definition} 
+        A differential equation of the form \[ Mdx + Ndy = 0 \] is called an exact differential equation if $\dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}$.
+        \end{definition}
+        
+        \begin{align*}
+            & f(x, y) = 0 \\
+            \implies & df = 0 \\
+            \implies & \dfrac{\partial f}{\partial x} dx + \dfrac{\partial f}{\partial y} dy = 0 \\
+        \end{align*}
+        Comparing with $Mdx + Ndy = 0$
+        \begin{align*}
+            M &= \dfrac{\partial f}{\partial x} & N &= \dfrac{\partial f}{\partial y} \\
+            \dfrac{\partial M}{\partial y} &= \dfrac{\partial^2 f}{\partial y \partial x} &
+            \dfrac{\partial M}{\partial y} &= \dfrac{\partial^2 f}{\partial x \partial y}. \\
+        \end{align*}
+        Assuming $F$ has continous IInd order partial derivatives.
+        Therefore $\dfrac{\partial^2 f}{\partial y \partial x} = \dfrac{\partial^2 f}{\partial x \partial y} \implies \dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}.$
+        The required solution is $$\underbrace{\displaystyle\int M dx}_{\text{keep $y$ as constant}} + \underbrace{\displaystyle\int N dy}_{\text{terms in } N \text{ free from } y} = c$$
+        \begin{enumerate}
+            \item Solve $(x^2 + y^2)dx + 2xydy = 0$
+            \item[] $M = x^2 + y^2 , \quad N = 2xy$
+            $$\dfrac{\partial M}{\partial y} = 2y, \quad \dfrac{\partial N}{\partial x} = 2y \implies \dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}$$
+            Therefore the given differential equation is exact. Now the solution is given by
+            \begin{align*}
+                & = \displaystyle\int M dx + \displaystyle\int N dy = c \\
+                & = \displaystyle\int_{y \text{ is constant }}(x^2 + y^2)dx + \displaystyle\int 0 dy = c \\
+                & = \dfrac{x^3}{3} + xy^2 = c
+            \end{align*}
+            \item The solution of the differential equation $$(x + 2y + 3)dx + (2x + y + 4)dy = 0$$ represents which conic ?
+            \begin{align*}
+                & M = x + 2y + 3, \quad N = 2x + y + 4 \\
+                & \dfrac{\partial M}{\partial y} = 2, \quad \dfrac{\partial N}{\partial x} = 2 \implies \dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}
+            \end{align*}
+            Therefore the required solution is
+            \begin{align*}
+                & \displaystyle\int (x + 2y + 3)dx + \displaystyle\int (y + 4)dy = c \\
+                \therefore & \dfrac{x^2}{2} + 2xy + 3x + \dfrac{y^2}{2} + 4y = c \\
+                \implies & x^2 + 4xy + y^2 + 6x + 8y = k
+            \end{align*}
+            is the required solution
+            Here $a = 1, b = 1, h = 2, f = 3, g = 4, c = k$
+            Hence \begin{align*}
+                \Delta  &= 
+                        \begin{vmatrix}
+                            1 & 2 & 4 \\
+                            2 & 1 & 3 \\
+                            4 & 3 & k
+                        \end{vmatrix} \\
+                        &= k - 9 -2(2k - 12) + 4(2) = 23 - 3k \neq 0 \text{ if $k = 0$ } \\
+                        & \text{ and } \\
+                h^2 - ab &= 4 - 1 = 3 > 0 \implies \text{ Hyperbola }
+            \end{align*}
+        \end{enumerate}
+        \setlength{\fboxsep}{1em}
+        \fbox{
+            \begin{minipage}[c]{0.9\linewidth}
+                \textbf{Note:} The general equation of the form $$ax^2 + by^2 + 2hxy + fx + gy + c = 0$$ represents a conic: \hfill \\
+                \begin{tabularx}{\textwidth}{X c}
+                    \begin{minipage}[c]{0.5\textwidth}
+                        \vspace{1em}
+                        \begin{enumerate}
+                            \item If $a = b$ and $h = 0$
+                            \begin{itemize}
+                                \item Circle
+                            \end{itemize}
+                            \item If $\Delta = 0$
+                            \begin{itemize}
+                                \item Pair of Straight lines
+                            \end{itemize}
+                            \item If $\Delta \neq 0$
+                            \begin{itemize}
+                                \item If $h^2 - ab > 0$: Hyperbola
+                                \item If $h^2 - ab = 0$: Parabola
+                                \item If $h^2 - ab < 0$: Ellipse
+                            \end{itemize}
+                        \end{enumerate}
+                    \end{minipage}
+                    \begin{minipage}[c]{0.5\textwidth}
+                        where $$
+                                \Delta = 
+                                        \begin{vmatrix}
+                                            a & h & g \\
+                                            h & b & f \\
+                                            g & f & c \\
+                                        \end{vmatrix} 
+                              $$
+                    \end{minipage}
+                \end{tabularx}
+            \end{minipage}
+        }
+            \subsection{Integrating Factor}
+            Sometimes the given differential equation is not an exact differential equation, then to make it exact we multiply that equation by a function if $x$ and $y$, which is called \textbf{Integrating Factor}.
+            \subsubsection{Properties}
+            \begin{enumerate}[label=\textbf{\arabic*.}]
+                \item \textbf{If the given differential equation is homogeneous, then \[ \text{I.F} = \dfrac{1}{Mx + Ny} \] provided $Mx + Ny \neq 0$.}
+                \item[] {Solve} $(x^2 + y^2)dx - (xy)dy = 0$
+                \item[] $M = x^2 + y^2, \quad N = -xy$
+                \[ \dfrac{\partial M}{\partial y} = 2y \neq -y = \dfrac{\partial N}{\partial x} \]
+                Therefore not exact. To make it exact we need to find an I.F. Since M and N are both homogeneous function with $n = 2$, \[ \text{I.F} = \dfrac{1}{Mx + Ny} = \dfrac{1}{x^3 + xy^2 - xy^2} = \dfrac{1}{x^3} \]. Multiplying by I.F, we get 
+                \[ \left( \dfrac{1}{x} + \dfrac{y^2}{x^3} \right)dx + \left( -\dfrac{y}{x^2} \right)dy = 0 \]
+                The solution is give by: \[ \displaystyle\int \left(\dfrac{1}{x} + \dfrac{y^2}{x^3} \right)dx + 0 = c \implies \log x - \dfrac{1}{2} \left( \dfrac{y^2}{x^2} \right) = c\]. Hence the solution is $\log x - \dfrac{1}{2} \left( \dfrac{y^2}{x^2} \right) = c$
+                \item \textbf{If the differential equation is of the form $$f_1(xy)ydx + f_2(xy)xdy = c$$ then the I.F $= \dfrac{1}{Mx - Ny}$}
+                \item[] Solve $(x^2y^3 + xy^2 + y)dx + (x^3y^2 - x^2y + x)dy = 0$ \hfill \\
+                $M = (x^2y^2 + xy + 1), \quad N = (x^2y^2 - xy + 1)$
+                \item[] It can be rewritten as \[ (x^2y^2 + xy + 1)ydx + (x^2y^2 - xy + 1)xdy = 0 \]
+                \item[] I.F $= \dfrac{1}{ x^3y^3 + x^2y^2 + xy - (x^3y^3 - x^2y^2 + xy)} = \dfrac{1}{2x^2y^2}$
+                The solution is \[ \displaystyle\int \left( y + \dfrac{1}{x} + \dfrac{1}{x^2y} \right)dx - \displaystyle\int \dfrac{1}{y}dy = c  = xy + \log x - \dfrac{1}{xy} - \log y = c\]
+                Hence the solution is $xy - \dfrac{1}{xy} + \log \left(\dfrac{x}{y}\right) = c$
+                \item \textbf{For the differential equation \[ Mdx + Ndy = 0 \] if it is not exact then if 
+                $\dfrac{1}{N}\left(\dfrac{\partial M}{\partial x} - \dfrac{\partial N}{\partial y}\right)$ is a function of $x$ say $f(x)$, \[ \text{I.F} = e^{\int f(x)dx} \]}
+                \item \textbf{For the differential equation \[ Mdx + Ndy = 0 \] if it is not exact then if
+                $-\dfrac{1}{M}\left(\dfrac{\partial M}{\partial x} - \dfrac{\partial N}{\partial y}\right)$ is a function of $y$ say $g(y)$, \[ \text{I.F} = e^{\int g(y)dy} \]}
+                \textbf{Example: }$(x^2 + y^2 + x)dx + xydy = 0$
+                $$\dfrac{\partial M}{\partial y} = 2y \neq y = \dfrac{\partial N}{\partial x}$$
+                $\dfrac{1}{xy} \left( \dfrac{\partial M}{\partial y} - \dfrac{\partial N}{\partial x} \right) = \dfrac{1}{x}$ which is a function if x, hence I.F = $e^{\int \frac{1}{x}dx} = x$. Therefore the required solution is \[ \displaystyle\int (x^3 + xy^2 + x^2)dx + 0 = c \implies \dfrac{x^4}{4} + \dfrac{x^2y^2}{2} + \dfrac{x^3}{3} = c \]
+                \item \textbf{If the differential equation $Mdx + Ndy = 0$ is of the form $$\underbrace{x^\alpha y^\beta(mydx + nxdy)}_{\text{I.F $= x^{km - 1 - \alpha}y^{kn - 1 - \beta}$}} + \underbrace{x^{\alpha_1} y^{\beta_1}(m_1xdy + n_1xdy)}_{\text{I.F} = x^{k_1m_1 - 1 - \alpha_1} y^{k_1n_1 - 1 - \beta_1}} = 0$$
+                Equate both Integrating factors and find $k$ and $k_1$, i.e
+                Solve for $k$ and $k_1$ the system of linear equations:}
+                \begin{align*}
+                    km - 1 - \alpha &= k_1m_1 - 1 - \alpha_1 \\
+                    kn - 1 - \beta &= k_1n_1 - 1 - \beta_1
+                \end{align*}
+                \item \textbf{Method by Inspection} \hfill \\
+                Solve $(x - x^2y)dx - ydy = 0$ 
+                \begin{align*}
+                    xdx - ydy &= x^2ydy \\
+                    \dfrac{xdx - ydy}{x^2} &= ydy \\
+                    d\left( \dfrac{y}{x} \right) &= ydy \\
+                    \dfrac{y}{x} &= \dfrac{y^2}{2} + c
+                \end{align*} 
+            \end{enumerate}
+
+\textbf{Note}
+\begin{enumerate}[label=\Roman*]
+    \item If the given differential equation contains \( (xdy - ydx) \)
+    as a term, then its multiplication with
+    \begin{enumerate}[label=\roman*]
+        \item $\dfrac{1}{x^2} \; \text{ gives } \; \dfrac{xdy - ydx}{x^2} = d\left( \dfrac{y}{x} \right)$
+        \item $\dfrac{1}{y^2} \;\text{ gives } \; \dfrac{xdy - ydx}{y^2} = -d\left( \dfrac{y}{x} \right)$
+        \item $\dfrac{1}{xy} \; \text{ gives } \; \dfrac{xdy - ydx}{xy} = \dfrac{dy}{y} - \dfrac{dx}{x} = d \left( \log \dfrac{y}{x} \right)$
+        \item $\dfrac{1}{x^2 + y^2} \; \text{ gives } \; \dfrac{xdy - ydx}{x^2 + y^2} = d \left( \tan^{-1} \dfrac{y}{x} \right)$ 
+        \item $\dfrac{1}{x\sqrt{x^2 - y^2}} \; \text{ gives } \; \dfrac{xdy - ydx}{x\sqrt{x^2 - y^2}} = d \left( \sin^{-1} \dfrac{y}{x} \right)$ 
+    \end{enumerate}
+    \item If the given differential equation contains \( (xdy - ydx) \)
+    \begin{enumerate}[label=\roman*]
+        \item $\dfrac{1}{xy} \; \text{ gives } \; \dfrac{xdy + ydx}{xy} = \dfrac{dy}{y} + \dfrac{dx}{x} = d \left( \log xy \right)$
+        \item $\dfrac{1}{(xy)^n} \; \text{ gives } \; \dfrac{xdy + ydx}{(xy)^n} = \dfrac{d(xy)}{(xy)^n} + \dfrac{dx}{x} = d \left( \dfrac{-1}{(n-1)(xy)^{n-1}} \right)$
+    \end{enumerate}
+\end{enumerate}
+
+\section{Linear Differential Equation of first order}
+    \begin{definition}
+        A differential equation of the form 
+        \[ \dfrac{dy}{dx} + Py = Q \] where P and Q both are function 
+        of only $x$ or constants is called Linear Differential Equation \\
+        In this case I.F \( = e^{\int Pdx} \) and the solution of this 
+        equation is 
+        \[ y(\text{I.F}) = \displaystyle\int Q(\text{I.F}) \; dx + C\]    
+    \end{definition}
+    \begin{center}
+        OR
+    \end{center}
+    \begin{definition}
+        A differential equation of the form 
+        \[ \dfrac{dx}{dy} + Py = Q \] where P and Q both are function 
+        of only $y$ or constants is called Linear Differential Equation \\
+        In this case I.F \( = e^{\int Pdx} \) and the solution of this 
+        equation is 
+        \[ x(\text{I.F}) = \displaystyle\int Q(\text{I.F}) \; dy + C\]    
+    \end{definition}
+    \begin{definition}
+        \textup{\textbf{Bernouli's Equation: }} A differential equation of the form 
+        \setcounter{equation}{0}
+        \begin{equation}
+            \label{bernouliseqn}
+            \dfrac{dx}{dy} + Py = Qy^n \quad (n \neq 0, 1)
+        \end{equation}
+        where P and Q both are function 
+        of only $y$ or constants is called Bernouli's Equation \\
+    \end{definition}
+    \textbf{If $n$ = 0} Equation (\ref{bernouliseqn}) becomes 
+    Linear Differential Equation of first order.
+    \[ \dfrac{dy}{dx} + Py = Q \] 
+    \textbf{If $n$ = 1} Then equation (\ref{bernouliseqn}) directly
+    converts to separable variable. Otherwise, dividing by $y^n$ in 
+    equation (\ref{bernouliseqn}) we get,
+    \begin{align*}
+        & \dfrac{1}{y^n} \dfrac{dy}{dx} + \dfrac{1}{y^{n-1}} P = Q \\
+        & \text{Let } \dfrac{1}{y^{n-1}} = v \\
+        \implies & (1-n)\dfrac{1}{y^n} \dfrac{dy}{dx} = \dfrac{dv}{dx} \\ 
+        \implies & \dfrac{1}{y^n} \dfrac{dy}{dx} = \dfrac{1}{(1-n)} \dfrac{dv}{dx} \\
+        \implies & \dfrac{1}{(1-n)} \dfrac{dv}{dx} + Pv = Q \\
+        \implies & \dfrac{dv}{dx} + (1-n)Pv = (1-n)Q 
+    \end{align*}
+    which is the called reducible linear equation.
+
+\subsection{Separable Variables}
+
+\subsubsection{Cases}
+\begin{enumerate}
+    \item A differential equation of the form 
+    \[ \dfrac{dy}{dx} = \dfrac{f_1(x)}{f_2(y)} \]
+    \i.e
+    \[ f_1(y)dy = f_2(x)dx \]
+    Integrate and solve for $y$.
+    \item A differential equation of the form
+    \[ \dfrac{dy}{dx} = f(ax + by + c) \]
+    In this case let $ax + by + c = v$,
+    \begin{align*}
+        & \implies a + b\dfrac{dy}{dx} = \dfrac{dv}{dx} \\
+        & \implies \dfrac{dy}{dx} = \dfrac{1}{b} \left( \dfrac{dv}{dx} - a \right) \\
+        & \implies \dfrac{1}{b} \left( \dfrac{dv}{dx} - a \right) = f(v) \\
+        & \implies \dfrac{dv}{dx} = bf(v) + a \\
+        & \implies \dfrac{dv}{bf(v) + a} = dx
+    \end{align*}
+    Integrate and find the solution. \hfill \\
+    \textbf{Note: } If the differential equation is of the form 
+    \[ \dfrac{dy}{dx} = f(ax + by) \]
+    then substitute $ax + by = v$.
+
+\end{enumerate}
+
+\subsection{Homogeneous Differential Equation}
+\begin{definition}
+    An equation of the form 
+    \[ f(x, y) = a_0x^n + a_1x^{n-1}y + a_2x^{n-2}y^2 + \cdots + a_ny^n \] 
+    is called homogenous equation in x and y of degree n. The above
+    equation can be written as 
+    \[ f(x, y) = x^n\left( a_0 + a_1\dfrac{y}{x} + a_2\left( \dfrac{y}{x} \right)^2 + \cdots + a_n\left( \dfrac{y}{x} \right)^n \right) \]
+    $$\therefore f(x, y) = x^nF\left( \dfrac{y}{x} \right)$$
+    where n is the degree of the function.
+\end{definition}
+
+\begin{theorem} \textup{\textbf{Euler's Theorem}} 
+    If $f(x, y)$ is an homogenous function in $x$ and $y$ of degree $n$, then
+    \[ x\dfrac{\partial f}{\partial x} + y\dfrac{\partial f}{\partial y} = nf \]
+\end{theorem}
+
+\begin{corollary}
+    $x\dfrac{\partial u}{\partial x} + y\dfrac{\partial u}{\partial y} = \textup{\textbf{degree}} \left( \dfrac{\text{f(u)}}{f'(u)} \right)$
+    where the f is f in the equation
+    \[ f(u) = g(x, y, z) \text{ or } f(u) = g(x, y) \]
+    and g is homogenous function and \textup{\textbf{degree}} is degree of g.
+\end{corollary}
+
+\begin{definition}
+    A differential equation of the form
+    \[ \dfrac{dy}{dx} = \dfrac{f_1(x, y)}{f_2(x, y)} \]
+    where $f_1(x, y)$ and $f_2(x, y)$ are both homogenous function of
+    $x, y$ of degree $n$
+\end{definition}
+    \[
+        \begin{rcases}
+            \dfrac{dy}{dx} &= \dfrac{x^nF_1\left( \dfrac{y}{x} \right)}{x^nF_2\left( \dfrac{y}{x} \right)} \\
+            \dfrac{dy}{dx} &= \dfrac{F_1\left( \dfrac{y}{x} \right)}{F_2\left( \dfrac{y}{x} \right)} \\
+            \dfrac{dy}{dx} &= F\left( \dfrac{y}{x} \right)    
+        \end{rcases}
+        \implies
+        \begin{aligned}[c]
+            & \dfrac{y}{x} = v \\
+            \therefore \; & y = vx \\
+            \therefore \; & \dfrac{dy}{dx} = \dfrac{dv}{dx} + v \\
+            & v + \dfrac{dv}{dx} = F(v) \\
+            & \dfrac{dv}{dx} = F(v) - v
+        \end{aligned}
+    \]
+    
+    \subsection{Non-Homogeneous Differential Equation}
+    
+    \begin{definition}
+        A differential equation of the form
+        \begin{equation}
+            \label{nonhomoeq}
+            \dfrac{dy}{dx} = \dfrac{ax + by + c}{a'x + b'y + c'}
+        \end{equation}
+        is called a non homogenous differential equation.
+    \end{definition}
+    \begin{enumerate}[label=\arabic*]
+        \item If $\dfrac{a}{a'} \neq \dfrac{a}{a'}$ replace
+        \begin{align*}
+            x &= X + h && dx = dX \\
+            y &= Y + k && dy = dY
+        \end{align*}
+        in equation (\ref{nonhomoeq}), then
+        In this case 
+    \end{enumerate}
+    \begin{align}
+        \dfrac{dy}{dx} &= \dfrac{a(X+h) + b(Y+k) + c}{a'(X+h) + b'(Y+k) + c')} \nonumber\\
+        \label{nohomomodeq}
+                       &= \dfrac{aX + bY + (ah + bk + c)}{a'X + b'Y + (a'h + b'k + c')}
+    \end{align}
+    Put
+    \begin{align*}
+        &{} ah + bk + c = 0 \\
+        &{} a'h + b'k + c' = 0
+    \end{align*}
+    and solve for $(h, k)$. Equation (\ref{nohomomodeq}) becomes
+    \[ \dfrac{dY}{dX} = \dfrac{aX + bY}{a'X + b'Y} \]
+    which is a homogenous differential equation. 
+\subsection{Oblique Trajectory}
+Consider the curve $F: f(x, y) = 0$. For finding the Oblique Trajectory
+to the curve F at an angle $\theta$. To find the family of curves
+oblique to the family of curves $f(x, y) = c$, find the derivative of
+the curve. Let $$\dfrac{dy}{dx} = p = g(x, y)$$ be the derivative of the family
+of curves $F$. Then replace $p$ by \[ \dfrac{p + p\tan\theta}{1-\tan\theta} \]
+and eliminate any constant before solving
+\[ \dfrac{\dfrac{dy}{dx} + \tan\theta}{1 - \dfrac{dy}{dx}\tan\theta} = g(x,y) \]
+
+\section{Linear Differential Equation of second order}
+The general form of equation of snd order is of the form
+\begin{equation}
+    \label{2deggeneq}
+    \dfrac{d^2y}{dx^2} + P\dfrac{dy}{dx} + Qy = R
+\end{equation}
+where $P, Q, R$ are the function of only $x$.
+Let $y = u$ be one integral part of complementary function
+\begin{align}
+    & \text{ Let } y = uv \label{eqn1} \\
+    \therefore & \dfrac{dy}{dx} = u\dfrac{dv}{dx} + v\dfrac{du}{dx} \text{ and } \label{eqn2} \\
+    & \dfrac{d^2y}{dx^2} = \dfrac{d^2u}{dx^2} + \dfrac{du}{dx}\dfrac{dv}{dx} + \dfrac{d^2v}{dx^2} \label{eqn3}
+\end{align}
+Put the values of $y, \dfrac{dy}{dx}, \dfrac{d^2y}{dx^2}$ in equation (\ref{2deggeneq}).
+Simplifying the equation, we get
+\begin{equation}
+    \label{eqn4}
+    \dfrac{d^2v}{dx^2} + \left( \dfrac{2}{u} \dfrac{du}{dx} + P \right)\dfrac{dv}{dx} = \dfrac{R}{u}
+\end{equation}
+Let $\dfrac{dv}{dx} = p$. Therefore equation (\ref{eqn4}) \hfill \\
+\begin{equation*}
+    \dfrac{dp}{dx} + \left( \dfrac{2}{u} \dfrac{du}{dx} + P \right)p = \dfrac{R}{u}
+\end{equation*}
+which is linear in $p$.
+\begin{align*}
+    \therefore \text{I.F} &= e \text{ to the power } \displaystyle\int\left( \dfrac{2}{u} \dfrac{du}{dx} + P \right)dx \\
+                          &= e \text{ to the power } \displaystyle\int\left( \dfrac{2}{u}du + Pdx \right) \\
+                          &= e \text{ to the power } \left( \log u^2 + \displaystyle\int Pdx \right) \\
+                          &= u^2e^{\int Pdx}
+\end{align*}
+The required solution is 
+\begin{align*}
+    p\cdot & u^2e^{\int Pdx} = \displaystyle\int \dfrac{R}{u}u^2e^{\int Pdx} dx + c_1 \\
+    \therefore p &= u^{-2}e^{-\int Pdx}\displaystyle\int \dfrac{R}{u}u^2e^{\int Pdx} dx + c_1u^{-2}e^{-\int Pdx} \\
+    \therefore \dfrac{dv}{dx} &= u^{-2}e^{-\int Pdx}\displaystyle\int \dfrac{R}{u}u^2e^{\int Pdx} dx + c_1u^{-2}e^{-\int Pdx} \\
+    \therefore v &= \displaystyle\int \left( u^{-2}e^{-\int Pdx}\displaystyle\int \dfrac{R}{u}u^2e^{\int Pdx} dx + c_1u^{-2}e^{-\int Pdx} \right) dx + c_2
+\end{align*}
+Therefore the required solution is 
+\[ y = \underbrace{c_2u + c_1u\displaystyle\int \left(u^{-2}e^{-\int Pdx} \right) dx}_{\text{complementary function}} + \underbrace{\displaystyle\int \left( u^{-2}e^{-\int Pdx}\displaystyle\int Rue^{\int Pdx} \right) dx}_{\text{particular function}} \]
+\begin{tabbing}
+    \textbf{Note: }The second integral part of the \= C.F 
+    \= $= u\displaystyle\int \left( u^{-2}e^{-\int Pdx} \right) dx$ \\
+    \> \> $= u\displaystyle\int \left( \dfrac{e^{-\int Pdx}}{u^2} \right) dx$ \\
+    \> P.I \> $ = \displaystyle\int \left( \dfrac{e^{-\int Pdx}}{u^2} \left( \int Rue^{\int Pdx} \right) dx \right) dx$
+\end{tabbing}
+
+\subsection{Examples}
+\begin{enumerate}[label=\textbf{\arabic*}]
+    \item 
+    Let $y = x$ be one integral part of the C.F of the differential equation
+    Find the P.I and other integral part.
+    \[ x^2\dfrac{d^2y}{dx^2} - 2x(1+x)\dfrac{dy}{dx} + 2(1+x) = x^3 \]
+    \textbf{Soln: }
+    The given equation can be written as 
+    \[ \dfrac{d^2y}{dx^2} - 2\dfrac{(1+x)}{x} \dfrac{dy}{dx} + 2\dfrac{(1+x)}{x^2} = x \]
+    where $P = \dfrac{-2(1+x)}{x}, Q = \dfrac{2(1+x)}{x^2}, u = x$ and $R = x$
+    , other part of the integral is given by
+    \[ 
+        u\displaystyle\int \dfrac{e^{-Pdx}}{u^2} dx = 
+        x\displaystyle\int \dfrac{e^{\int\left( 2 + \frac{2}{x} \right)dx}}{x^2} dx =
+        x\displaystyle\int \dfrac{e^{2x}x^2}{x^2} dx = \dfrac{xe^2}{2}
+    \]
+    \item Let $y = xv$ be a solution to the differential equation
+    \[ x^2\dfrac{d^2y}{dx^2} - 3x\dfrac{dy}{dx} + 3y = 0 \]
+    If $v(0) = 0, v(1) = 2$, then find $v(-2)$ \hfill \\
+    \textbf{Soln: } 
+    \[ \dfrac{d^2y}{dx^2} + \left( -\dfrac{3}{x} \right) \dfrac{dy}{dx} + \left( \dfrac{3}{x^2} \right) y = 0 \]
+    Clearly $P = -\dfrac{3}{x}, Q = \dfrac{3}{x^2}, R = 0, u = x$, 
+    we know that
+    \begin{align*}
+        \bm{v}   &= c_1\displaystyle\int \left( \dfrac{e^{-\int Pdx}}{u^2} \right) dx + c_2 \\
+            &= c_1\displaystyle\int \left( \dfrac{x^3}{x^2} \right) dx + c_2 \\
+            &= \dfrac{c_1x^2}{2} + c_2
+    \end{align*} 
+    Therfore $v = \dfrac{c_1x^2}{2} + c_2$
+    \begin{align*}
+        v(0) &= 0 && \implies \dfrac{c_1(0)}{2} + c_2 = 0 && \implies c_2 = 0 \\
+        v(1) &= 1 && \implies \dfrac{c_1(1)}{2} + c_2 = 1 && \implies \dfrac{c_1}{2} + c_2 = 1
+    \end{align*}
+    Therefore $c_1 = 2, c_2 = 0$ implies $\bm{v = x^2}$, $v(-2) = (-2)^2 = 4$.
+\end{enumerate}
+\textbf{Note: }To find the one integral part of C.F of the 
+differential equation
+\[ \dfrac{d^2y}{dx^2} + P\dfrac{dy}{dx} + Qy = R \]
+\begin{enumerate}
+    \item If $P + Qx = 0$, then $y = x$ is one integral part of the C.F.
+    \item If $2 + 2Px + Qx^2 = 0$, then $y = x^2$ is one integral part of the C.F.
+    \item If $m(m-1) + Pmx + Qx^2 = 0$, then $y = x^m$ is one integral part of the C.F.
+    \item If $1 + P + Q = 0$, then $y = e^x$ is one integral part of the C.F.
+    \item If $1 - P + Q = 0$, then $y = e^{-x}$ is one integral part of the C.F.
+    \item If $m^2 + Pm + Q = 0$, then $y = e^{mx}$ is one integral part of the C.F.
+\end{enumerate}
+
+\subsection{Removal of first derivative}
+\begin{equation}
+    \label{2deggeneqrod}
+    \dfrac{d^2y}{dx^2} + P\dfrac{dy}{dx} + Qy = R
+\end{equation}
+Let y = uv be the solution of the equation \circled{\ref{2deggeneqrod}}
+Therefore equation \circled{\ref{2deggeneqrod}} reduces to 
+\[ \dfrac{d^2v}{dx^2} + Xv = Y \]
+where 
+\begin{align*}
+    X = Q - \dfrac{1}{2}\dfrac{dP}{dx} - \dfrac{1}{4}P^2, &&
+    Y = Re^{\frac{1}{2}\int Pdx} && 
+    u = e^{-\frac{1}{2}\int Pdx}
+\end{align*}
+\textbf{Ex. } If $y = v\sec x$ is a solution of $y'' - (2\tan x) y' + 5y = 0, 
+-\dfrac{\pi}{2} < x < \dfrac{\pi}{2}$, satisfying $y(0) = 0,
+y'(0) = \sqrt{6}$, then $v\left( \dfrac{\pi}{6\sqrt{6}} \right) =$ ? \\
+\textbf{Soln: } $P = -2\tan x, \quad Q = 5, \quad R = 0, \quad u = \sec x$ 
+By eliminating first derivative equation in the question the
+equation reduces to \[ \dfrac{d^2v}{dx^2} + Xv = Y \] where 
+\begin{align*}
+    X &= Q - \left( \dfrac{1}{2} \right)\dfrac{dP}{dx} - \dfrac{1}{4} P^2
+    &
+    Y &= Re^{-\int Pdx} \\
+      &= 5 + \left( \dfrac{1}{2} \right) 2\sec^2 x - \left( \dfrac{1}{4} \right)4\tan^2 x
+    &
+      &= 0 \\
+      &= 5 + 1 = 6
+    &
+      &= 0
+\end{align*}
+that is \[ \dfrac{d^2v}{dx^2} + 6v = 0 \]. The auxillary equation
+for this differential equation is $m^2 + 6 = 0 \implies m = \pm\sqrt{6}\iota$
+Therefore the solution is $$y = v\sec x = (c_1\cos \sqrt{6}x + c_2\sin \sqrt{6}x)\sec x$$  
+The boundary value conditions are
+\begin{align*}
+    y(0) &= 0 & y'(0) &= \sqrt{6} \\
+    \implies c_1 &= 0 & \sec x\tan x(c_1\cos \sqrt{6}x + c_2\sin \sqrt{6}x) + \sec x(-\sqrt{6}c_1\sin \sqrt{6}x + \sqrt{6}c_2\cos \sqrt{6}x) \bigm\vert_{x = 0} &= \sqrt{6} \\
+    \implies & & 0 + c_2\sqrt{6} &= \sqrt{6}
+\end{align*}
+Therefore $y = \sec x \sin\sqrt{6}x$ and $v = \sin\sqrt{6}x$ which
+implies $v\left( \dfrac{\pi}{6\sqrt{6}} \right) = \sin\left( \sqrt{6}\dfrac{\pi}{6\sqrt{6}} \right) = {\dfrac{\textbf{1}}{\textbf{2}}}$ \\
+\textbf{Note: }If algebraic function is given apply this section's
+starting formulae and if trigonometric function is given then use Removal of first derivative concept
+
+    \section{General Theory of Linear Differential Equation of Higher 
+    Order}
+        The general linear differential equation of the $nth$ order is
+        of the form 
+        \begin{equation}
+            \label{genlinearde}
+            a_0\dfrac{d^ny}{dx^n} + a_1\dfrac{d^{n-1}y}{dx^{n-1}} + 
+            \cdots + a_{n-1}\dfrac{dy}{dx} + a_ny = Q
+        \end{equation}
+        where $a_0(x), a_1(x), \cdots, a_n(x)$ and $Q(x)$ are continous function of
+        $x$ over the interval $I = [a, b]$ and $a_0(x) \neq 0$. Equation
+        (\ref{genlinearde}) can be rewritten as 
+        \begin{equation}
+            \label{genlineardedoperator}
+            (a_0D^n + a_1D^{n-1} + \cdots + a_{n-1}D + a_n)y = Q
+        \end{equation}
+        \subsection{Classification of L.D.E}
+            \begin{description}
+                \item \textbf{Homogenenous and Non-Homogeneous differential
+                equation} 
+
+                The differential equations (\ref{genlinearde}) and
+                (\ref{genlineardedoperator}) are said to be homogeneous
+                differential equations if $Q(x) = 0$, else they are
+                said to be non-homogeneous differential equations. ($Q(x)
+                \neq 0$)
+                
+                \item \textbf{Variable coefficents and Constant coefficents}
+                
+                If $a_0(x), a_1(x), \cdots, a_{n-1}(x), a_n(x)$ are \textbf{all} constants,
+                then that differential equation is called L.D.E with constant
+                coefficents otherwise it's called L.D.E with variable coefficents.
+            \end{description}
+        \subsection{Termonologies}
+            \begin{description}
+                \item \textbf{Linear Combination of functions}
+                
+                Let $f_1, f_2, f_3, \cdots f_n$ be $n$ functions defined
+                on a domain $D$, then the expression $c_1f_1 + c_2f_2 +
+                c_3f_3 + \cdots c_nf_n$ is called the linear combination
+                of those functions
+
+                \item \textbf{Convex Combination}
+                
+                A convex combination is a linear combination of a type
+                where $\displaystyle\sum_{i=1}^n c_i = 1$ and $c_i \ge 0$
+                for all $i$'s
+
+                \item \textbf{Linearly Independent functions}
+                
+                The $n$ functions $f_1, f_2, \cdots f_n$ are called lineraly
+                independent functions on a common domain $D$ if $c_i = 0$ 
+                for all $i$'s
+
+                \item \textbf{Linearly Dependent functions}
+                
+                The $n$ functions $f_1, f_2, \cdots f_n$ are called lineraly
+                independent functions on a common domain $D$ if there 
+                exist a scalar $c_i \neq 0$
+            \end{description}
+
+            \subsubsection{Principle of Superposition}
+            Consider the nth order linear differential equation 
+            (\ref{genlinearde}). If $y_1, y_2, \cdots y_n$ are any
+            $n$ solutions of (\ref{genlinearde}), then the linear
+            combination \[y = c_1y_1 + c_2y_2 + \cdots + c_ny_n = 0 \]
+            is also a solution of (\ref{genlinearde}) if either \[
+            Q(x) = 0 \]
+            \begin{center}
+                OR
+            \end{center}
+            \[ \displaystyle\sum_{i=1}^n c_i = 1 \]
+
+            \textbf{Note}
+            \begin{enumerate}
+                \item If $y_1, y_2$ are solutions of a \textbf{homogeneous 
+                differential equation}, then $c_1y_1 + c_2y_2$, where
+                $c_1, c_2$ are any scalars is also a solution of the 
+                same \textbf{homogeneous differential equation}.
+                \item If $y_1, y_2$ are solutions of a \textbf{non - 
+                homogeneous differential equation}, then $c_1y_1 + c_2y_2$, 
+                where $c_1, c_2$ are any scalars is also a solution of the 
+                same \textbf{non - homogeneous differential equation} if
+                $c_1 + c_2 = 1$.
+                \item If $y_1, y_2$ are solutions of a \textbf{non - homogeneous differential equation}, then 
+                $y_1 - y_2$ is the solution of same 
+                \textbf{homogeneous differential equation}
+                
+            \end{enumerate}
+
+        \subsection{Wronskian}
+        Consider the second order homogenenous linear differential equation 
+        \begin{equation}
+            \label{solde}
+            a_0\dfrac{d^2y}{dx^2} + a_1\dfrac{dy}{dx} + a_2y = 0
+        \end{equation}
+        where $a_0(x), a_1(x)$ and $a_2(x)$ are continous functions of
+        $x$ and $a_0 \neq 0$ for all $x \in [a, b]$, then the Wronskian 
+        \[ W(y_1, y_2) = W(x) = Ae^{\int -\left( \frac{a_1(x)}{a_0(x)} \right)dx } \]
+        This is also known as the \textbf{Abel's Formula}. 
+
+        \noindent Let $y_1, y_2$ be two solutions of (\ref{solde})
+        \begin{align}
+            \therefore \quad & a_0y_1'' + a_1y_1' + a_0y_1 = 0 \text{ and } \\
+            & a_0y_2'' + a_1y_2' + a_0y_2 = 0
+        \end{align}
+        Now $
+                W(y_1, y_2) =
+                                \begin{vmatrix}
+                                    y_1 & y_2 \\
+                                    y_1' & y_2'
+                                \end{vmatrix}
+                            = y_1y_2' - y_2y_1'
+            $ and $W' = y_1y_2'' - y_2y_1''$.
+        Consider 
+        \begin{align*}
+            a_0W' &= y_1(a_0y_2'') - y_2(a_0y_1'') \\
+                  &= y_1(-a_1y_2' - a_2y_2) - y_2(-a_1y_1' - a_2y_1) \\
+                  &= -a_1(y_1y_2' - y_2y_1') \\
+                  &= -a_1W \\
+            \therefore \quad \dfrac{W'}{W} &= -\dfrac{a_1(x)}{a_0(x)} \\
+            \implies W &= Ae^{\int -\left( \frac{a_1(x)}{a_0(x)} \right)dx }
+        \end{align*}
+
+        \subsection{Wronskian Properties}
+        \begin{enumerate}
+            \item Consider the IInd order homogeneous linear differential 
+            equation 
+            \[ a_0\dfrac{d^2y}{dx^2} + a_1\dfrac{dy}{dx} + a_2y = 0 \]
+            where $a_0(x), a_1(x)$ and $a_2(x)$ are continous functions over the 
+            interval $I = [a, b]$. Then any two solutions
+            \begin{enumerate}
+                \item $y_1, y_2$ of the above equation are linearly 
+                independent iff $W(y_1, y_2) \neq 0$ over the interval 
+                $I$
+                \item $y_1, y_2$ of the above equation are linearly 
+                dependent iff $W(y_1, y_2) = 0$ over the interval 
+                $I$
+            \end{enumerate}
+            \item If $y_1, y_2$ are two solutions of a differential 
+            equation and the differential equation is not given then
+            \begin{enumerate}
+                \item If $W(y_1, y_2) \neq 0 \implies y_1$ and $y_2$ are
+                linearly independent.
+                \item If $W(y_1, y_2) = 0,$ then we can't say anything.
+            \end{enumerate}
+            \item Let $y_1 = e^{m_1x}, y_2 = e^{m_2x}, \cdots, y_n 
+            = e^{m_nx}$ be n linearly independent solutions of a 
+            differential equation, then their Wronskian is given by
+            \[ 
+                W(y_1, y_2, \cdots, y_n) = e^{(m_1 + m_2 + \cdots + m_n)x} 
+                \begin{vmatrix}
+                    1 & 1 & \cdots & 1\\
+                    m_1 & m_2 & \cdots & m_n \\
+                    m_1^2 & m_2^2 & \cdots & m_n^2 \\
+                    \vdots & \vdots & \ddots &\vdots \\
+                    m_1^{n-1} & m_2^{n-1} & \cdots & m_n^{n-1}
+                \end{vmatrix}
+            \]
+            This is also called as the \textbf{Vandermonde determinant}.
+            \item Let $y = y(x)$, then consider the differential equation
+            $\dfrac{dy}{dx} = y^\alpha, y(b) = 0, b \in \mathbb{R}$ and 
+            $a \in (0,1)$. This D.E has infinte number of real valued
+            solution and and infinte linearly independent solutions. But
+            if $y(b) = 1 b \in \mathbb{R}, a \in (0,1)$, then number of
+            solutions is unique. (IISc Motherfucking Banglore IITJAM 2021)
+        \end{enumerate}
+\end{document}

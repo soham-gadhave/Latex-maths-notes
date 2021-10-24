@@ -1,0 +1,1275 @@
+\documentclass[a4paper, titlepage]{article}
+\usepackage{bm}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, mathtools}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\title{Linear Algebra}
+\author{Soham Gadhave}
+\date{$5^{\text{th}}$ September 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Field}
+
+Let F be non-empty set. Let '+' and '.' be two binary operations. Then, \\
+$\implies (F, +)$ must be an Abelian group 
+\begin{enumerate}[label=\alph*]
+    \item \textbf{Closure:} For all $ x, y \in \text{F}, x + y = z \in \text{F}$ 
+    \item \textbf{Associative:} For all $x, y, z \in $ F, $(x + y) + z = x + (y + z)$
+    \item \textbf{Identity:} For all $x \in $ F, there exists an element $e \in $ F such that $x + e = e + x = x$
+    \item \textbf{Inverse:} For all $x \in $ F, there exists an element $y \in $ F such that $x + y = e$
+    \item \textbf{Commutative:} For all $x, y \in $ F, $x + y = y + x$
+    \item[] First Four properties forms a group and all the five properties forms an Abelian group on '+'
+\end{enumerate}
+$\implies (F, *)$ must be an Abelian group 
+\begin{enumerate}[label=\alph*]
+    \item \textbf{Closure:} For all $ x, y \in \text{F}, x \cdot y = z \in \text{F}$ 
+    \item \textbf{Associative:} For all $x, y, z \in $ F, $(x \cdot y) \cdot z = x \cdot (y \cdot z)$
+    \item \textbf{Identity:} For all $x \in $ F, there exists an element $e \in $ F such that $x \cdot e = e \cdot x = x$
+    \item \textbf{Inverse:} For every \textbf{non-zero} element $x \in $ F, there exists an element $y \in $ F such that $x \cdot y = e$
+    \item \textbf{Commutative:} For all $x, y \in $ F, $x \cdot y = y \cdot x$
+    \item[] First Four properties forms a group and all the five properties forms an Abelian group on '$\cdot$'
+    \item[] \textbf{Note:} Identity is the property of the set F and
+    Inverse is the property of the elements of the set F \\
+\end{enumerate}
+$ \implies $ \textbf{Distributve Laws:}
+    \begin{enumerate}
+        \item $ a\cdot(b + c) = a\cdot b + a\cdot c $
+        \item $ (b + c)\cdot a = b\cdot a + c\cdot a $
+    \end{enumerate}
+
+\begin{center}
+    \date{$6^{\text{th}}$ September 2021}
+\end{center}
+
+\section{Vector Space}
+
+Let V be a non empty set and F be a field. Let '+' and '$\cdot$' 
+be two binary operations.
+\begin{description}
+    \item[\textbf{Vector Addition:}] \hfill
+    \begin{itemize}
+        \item For all $ \vec{u}, \vec{v} \in $ V, $ \vec{u} + \vec{v} \in $ V. 
+        \item For all $ \vec{u}, \vec{v}, \vec{w} \in $ V, $ (\vec{u} + \vec{v}) + \vec{w} = \vec{u} + (\vec{v} + \vec{w}) \in $ V. 
+        \item For all $ \vec{u} \in $ V, there exists an $\vec{e} \in $ V such
+        that $ \vec{u} + \vec{e} = \vec{u} = \vec{e} + \vec{u} $. 
+        \item For all $ \vec{u} \in $ V, there exists a $ \vec{v} \in V $ 
+        such that $ u + v = v + u = e $. 
+        \item For all $ \vec{u}, \vec{v} \in $ V, $ \vec{u} + \vec{v} = \vec{v} + \vec{u} $. 
+    \end{itemize}
+    \item \textbf{Scalar Multiplication: } \hfill
+    \begin{itemize}
+        \item Let $ \vec{u} \in $ V and $ k \in $ F, then 
+        $ ku \in $V.
+        \item Let $ \vec u \in V $ and $ k_1, k_2 \in $ F, then 
+        $ (k_1 + k_2)\vec{u} = k_1\vec{u} + k_2\vec{u} $ 
+        \item Let $ \vec{u}, \vec{v} \in V $ and $ k \in $ F,
+        then $ k(\vec u + \vec v) = k\vec u + k\vec v $
+        \item Let $ k_1, k_2 \in $ F and $ \vec u \in $ V, then
+        $ (k_1k_2)\vec u = k_1(k_2\vec u)  $ 
+        \item There exists $ 1 \in F $ such that for all $ \vec u
+        \in $ V, $ 1\cdot\vec u = \vec u$
+    \end{itemize}
+\end{description}
+If a non empty set V satisfies all these properties over the Field
+F under the binary operations '+' and '$\cdot$', then V is said to
+be a Vector space over field F.
+\begin{description}
+    \item[\textbf{Notations:}] 
+        \begin{itemize}
+            \item[]
+            \item $\mathbb{R} = (-\infty, \infty)$
+            \item $\mathbb{R}^2 = \{ (x, y) \hspace{3pt} | \hspace{3pt} x, y \in \mathbb{R} \}$
+            \item $\mathbb{R}^3 = \{ (x, y, z) \hspace{3pt} | \hspace{3pt} x, y, z \in \mathbb{R} \}$
+            \item $\mathbb{R}^n = \{ (x_1, x_2, \cdots, x_n) \hspace{3pt} | \hspace{3pt} x_1, x_2, \cdots, x_n \in \mathbb{R} \}$
+        \end{itemize}
+    \item[]  
+\end{description}
+
+
+
+\section{Vector Subspaces}
+
+% ================================================================
+
+\begin{center}
+    \date{$7^{\text{th}}$ September 2021}
+\end{center}
+
+\begin{definition}
+    \label{subspacedef1}
+    Let $V$ be a vector space over the field $F$ and $W$ be its subset. 
+    $W$ is called the subspace of $V$ if W is itself a vector space 
+    over the same field $F$ with the same binary operations as of V.
+\end{definition}
+\begin{center}
+    OR
+\end{center}
+\begin{definition}
+    \label{subspacedef2}
+    Let $V$ be a vector space over the field $F$ and $W$ be its subset. 
+    $W$ is called the subspace of $V$ over the same field $F$ with the 
+    same binary operations if for all $\alpha, \beta \in F$ and u, v
+    in $W$.
+\end{definition}
+\begin{align*}
+    \alpha\cdot\bm{u} + \beta\cdot\bm{v} \in W
+\end{align*}
+\begin{center}
+    OR
+\end{center}
+\begin{definition}
+    \label{subspacedef3}
+    Let $V$ be a vector space over the field $F$ and $W$ be its subset. 
+    $W$ is called the subspace of $V$ over the same field $F$ with the 
+    same binary operations if for all $u, v \in W$ and $\alpha \in F$.
+\end{definition}
+\[ \bm{u} + \bm{v} \in W \text{ and } \alpha \bm{u} \in W \]
+\subsection{Examples}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item Let $V$ be a set of all functions from $S$ to $F$. Is $V$ a
+    vector space under the binary operations
+    $ (f + g)(x) = f(x) + g(x) $ and $ (cf)(x) = c\cdot f(x) $ where S is
+    a non-empty set.
+    \item[] $ V = \{ f \left. \right\vert f: S \rightarrow V \}$, $S \neq \phi$ \hfill \\ 
+    \textbf{Vector Addition}:
+    \begin{enumerate}[label=\textbf{\alph*}]
+        \item \textbf{Closure}: 
+        Let $f, g \in V \implies f: S \rightarrow F,\; g: S \rightarrow F$
+        $$(f + g)(x) = f(x) + g(x) \; \forall x \in S$$
+        and since 
+        $$f(x), \; g(x) \in F, \; f(x) + g(x) \in F$$
+        therefore 
+        $$(f + g): S \rightarrow F \implies (f+g) \in V$$
+        \item \textbf{Association: } For all $x \in S$
+        \begin{align*}
+            \left( (f + g) + h \right)(x) &= \left( f(x) + g(x) \right) + h(x) \\
+                       &= f(x) + \left( g(x) +h(x) \right) \text{, since } f(x), \; g(x), \; h(x) \in F \\ 
+                       &= f + (g + h)(x) \\
+        \end{align*}
+        \item \textbf{Identity: }
+        For all $f$ we have to find an $e$ (if it exists) such that
+        $$ f + e = f $$
+        or
+        $$ f(x) + e(x) = f(x), \; \forall x \in S $$
+        which implies
+        $$ e(x) = 0 \; \forall x \in S $$
+        $e(x) = 0$ is the Identity element.
+        \item \textbf{Inverse: } For every $f$ there must exist $g$
+        such that 
+        \begin{align*}
+            f + g &= e \\
+            \implies f(x) + g(x) &= e(x), \; \forall x \in S \\ 
+            \implies g(x) &= 0 - f(x) \\ 
+            \implies g(x) &= -f(x) 
+        \end{align*}
+        There exist $g = -f$ for every $f$ in $V$.
+        \item \textbf{Commutative: } For all $x \in S$ 
+        \begin{align*}
+            (f + g)(x) &= f(x) + g(x) \\
+                       &= g(x) + f(x) \text{, since } f(x), \; g(x) \in F \\ 
+                       &= (g + f)(x) \\
+        \end{align*}
+    \end{enumerate}
+    \textbf{Scalar Multiplication: }
+        \begin{enumerate}[label=\textbf{\alph*}]
+            \item Let $f \in V$ and $k \in F$, then as per definition, for $x \in S$ 
+            $$
+                (k \cdot f)(x) = k\cdot f(x)
+            $$
+            since $k, f(x) \in F $ therefore $k\cdot f(x) \in F$. This 
+            implies $c\cdot f \in V$
+            \item Let $f \in V$ and $k_1, k_2 \in F$, then for all $x$
+            \begin{align*}
+                ((k_1 + k_2)\cdot f)(x) &= (k_1 + k_2)\cdot f(x) \\
+                                        &= k_1\cdot f(x) + k_2\cdot f(x) \\
+                                        &= (k_1\cdot f)(x) + (k_2\cdot f)(x)
+            \end{align*}
+            Therefore $(k_1 + k_2)\cdot f = k_1\cdot f + k_2\cdot f$
+            \item Let $f \in V$ and $k_1, k_2 \in F$, then for all $x$
+            \begin{align*}
+                ((k_1k_2)\cdot f)(x) &= (k_1k_2)\cdot f(x) \\
+                                        &= k_1(k_2\cdot f(x)) \text{, since } k_1, k_2, f(x) \in F\\
+                                        &= k_1(k_2\cdot f)(x)
+            \end{align*}
+            which implies $(k_1k_2)\cdot f = k_1(k_2\cdot f)$.
+            \item Let $f, g \in V$ and $k \in F$, then for all $x$
+            \begin{align*}
+                (k\cdot (f+g))(x) &= k\cdot (f(x) + g(x)) \\
+                                        &= k\cdot f(x) + k\cdot g(x) \text{, since } k, f(x), g(x) \in F\\
+                                        &= (k\cdot f)(x) + (k\cdot g)(x)
+            \end{align*}
+            \item Let $f \in V$, $1 \in F$ then for all $x$ 
+            $$ 1\cdot f(x) = f(x) $$
+            which implies $1\cdot f = f$
+        \end{enumerate}
+        Hence $V$ is a vector space.
+    \item Let V be the set of all polynomials from $F \rightarrow F$.
+    Is $V$ a vector space over the field $F$?
+    \item[] 
+    $V = \{ a_0 + a_1x + a_2x^2 + \cdots + a_nx^n + \cdots \; | \; a_i \in F \; \forall i \} $ \hfill \\
+    \textbf{Vector Addition: }
+    \begin{itemize}
+        \item Let $p, q \in V$, then $p + q \in V$
+        \item Let $p, q, r \in V$, then $(p + q) + r = p + (q + r)$
+        \item Let $ p \in V $, then for $q = \textbf{0} \in V$, $p + q = p$
+        \item Let $ p \in V $, then for $q = -p \in V$, $p + q = 0$
+        \item Let $p, q \in V$, then $p + q = q + p$
+    \end{itemize}
+    \textbf{Scalar Multiplication: }
+    \begin{itemize}
+        \item Let $p \in V, k \in F$, then $k\cdot f \in V$ 
+        \item Let $p \in V$ and $k_ 1, k_2 \in F$, then $(k_1 + k_2)\cdot p = k_1\cdot p +  k_2\cdot p$
+        \item Let $p \in V$ and $k_ 1, k_2 \in F$, then $(k_1k_2)\cdot p = k_1(k_2\cdot p)$
+        \item Let $p, q \in V$ and $k \in F$, then $k\cdot (p + q) = k\cdot p +  k\cdot q$
+        \item Let $p \in V$ and $1 \in F$, then $1\cdot p = p$
+    \end{itemize}
+    \item Let $V$ be the set of all polynomials of degree n. Is $V$ a vector space?
+    \item[] $V$ is not a vector space because the following properties fails:
+    \begin{itemize}
+        \item \textbf{Closure: } Consider the polynomials 
+        $p = x^n + x + 1$ and $q = -x^n + x + 1$, then
+        $$ p + q = 2x + 1 $$
+        which doesn't belong to V because it degree is not $n$.
+        \item \textbf{Identity: } The degree of the polynomial $p = 0$
+        is not defined, but it is certainly doesn't belong to $V$
+    \end{itemize}
+    \item $V$ is the set of all polynomials whose degree is atmost $n$.
+    \item[]
+    $V = \{ a_0 + a_1x + a_2x^2 + \cdots + a_kx^k \; | \; a_i \in F \; \forall i \; \text{and} \; k \le n \} $ \hfill \\ 
+    It is a vector space over $F$ because it 
+    satisfies all the properties of vector space and for that of the
+    identity element \textbf{0}, it belongs to $V$ (if we put $a_i = 0$ for all $i$'s)
+    \item $V$ is the set of all polynomials whose degree is atleast $n$.
+    \item[] Same as \textbf{Ex \#3} 
+    \item $V$ is the set of all $m$x$n$ matrices.
+    \item[] Yes $V$ is a vector space
+    \begin{center}
+        \date{$9^{\text{th}}$ September}
+    \end{center}
+    \item $W_1 = \{ f \in V \vert \; f \text{ is a continous function} \}$ \hfill \\
+    $W_1 \subseteq V$, where $V$ is the vector space of all functions $f: S \rightarrow F$.
+    We know that \hfill \\
+    $\textbf{0}(x) = 0$ for all $x \in S$, hence \textbf{0} in $W_1$. Now 
+    for $f \text{ and } g \in W_1$ consider
+    \[ (\alpha f + \beta g)(x), \text{ for all } x \in S \]
+    This function is continous because it is the sum of two 
+    constinous functions. Hence \( (\alpha f + \beta g)(x) \) is also
+    in $W_1$. Therefore $W_1$ is a subspace
+    \item $W_3 = \{ f \in V \left. \right\vert f(-x) = f(x) \quad \forall x \in S \} $ \hfill \\
+    $ = $ set of all even functions \hfill \\
+    $\textbf{0}(x) = 0$, for all $x \in S$, hence 
+    $\textbf{0}(x) = \textbf{0}(-x)$ and therefore $\textbf{0} \in W_3$. Now Let
+    \[ h(x) = (\alpha\cdot f + \beta\cdot g)(x) \quad \text{for all } x \in S\]
+    Then
+    \begin{align*}
+        h(x) &= (\alpha\cdot f)(x) + (\beta\cdot g)(x) \quad \\
+            &= \alpha f(x) + \beta g(x) \\
+            &= \alpha f(-x) + \beta g(-x) \\
+            &= (\alpha\cdot f)(-x) + (\beta\cdot g)(-x) \quad \\
+            &= (\alpha\cdot f + \beta\cdot g)(-x) \quad \\
+            &= h(-x)
+    \end{align*}
+    which implies $(\alpha\cdot f + \beta\cdot g)$ is an even function.
+    Therefore $(\alpha\cdot f + \beta\cdot g) \in W_3$ and $W_3$ is a
+    subspace.
+    \item $W_4 = \{ f \in V \left. \right\vert f(x) = -f(-x) \quad \forall x \in S \} $ \hfill \\
+    $ = $ set of all odd functions \hfill \\
+    $\textbf{0}(x) = 0$, for all $x \in S$, hence 
+    $\textbf{0}(x) = -\textbf{0}(-x)$ and therefore $\textbf{0} \in W_4$. Now Let
+    \[ h(x) = (\alpha\cdot f + \beta\cdot g)(x) \quad \text{for all } x \in S\]
+    Then
+    \begin{align*}
+        h(x) &= (\alpha\cdot f)(x) + (\beta\cdot g)(x) \quad \\
+            &= \alpha f(x) + \beta g(x) \\
+            &= \alpha f(-x) + \beta g(-x) \\
+            &= -(\alpha\cdot f)(-x) - (\beta\cdot g)(-x) \quad \\
+            &= -(\alpha\cdot f + \beta\cdot g)(-x) \quad \\
+            &= -h(-x)
+    \end{align*}
+    which implies $(\alpha\cdot f + \beta\cdot g)$ is an odd function.
+    Therefore $(\alpha\cdot f + \beta\cdot g) \in W_4$ and $W_4$ is a
+    subspace 
+    \item $V = \mathbb{R}^2, F = \mathbb{R}$ and 
+    $$W = \{ (x, y) \vert x, y \in \mathbb{R} \text{ and } x \ge 0 \}$$
+    $(0, 0) \in W$. Let u = (1, 1) and $\alpha = -1$, therefore 
+    $\alpha\cdot u \notin W$ because $(-1, -1)$ has its $x$ component 
+    is negative and $W$ is not a subspace.
+    \item $W_5 = \{ A = M_{n\times n}(F) \left. \right\vert 
+    a_{ij} = a_{ji} \text{ for all } i, j \}$ \hfill \\
+    $W_5$ is the set of all $n\times n$ symmetric matrices, hence for
+    all $A \in W_5,{} A = A^\intercal$. \hfill \\
+    Null matrix = $\textbf{0} =  
+    \begin{bmatrix}
+        0 & 0 & \cdots & 0 \\
+        0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\ 
+        0 & 0 & \cdots & 0
+    \end{bmatrix}$. It is clear that 
+    $\textbf{0} = \textbf{0}^\intercal$. Hence $\textbf{0} \in W_5$. \hfill \\
+    Let 
+    $C = \alpha A + \beta B$
+    , where $A, B \in W_5$ and $\alpha, \beta \in F$, then 
+    \begin{align*}
+        C^\intercal &= (\alpha A + \beta B)^\intercal \\
+                    &= (\alpha A)^\intercal + (\beta B)^\intercal \\
+                    &= \alpha A^\intercal + \beta B^\intercal \\
+                    &= \alpha A + \beta B \\
+                    &= C
+    \end{align*}
+    which implies $C = C^\intercal$ for all $A, B \in W_6$ and 
+    $\alpha, \beta \in F$, and hence $C \in W_6$. $W_6$ is a subspace
+    \item $W_6 = \{ A = M_{n\times n}(F) \left. \right\vert 
+    a_{ij} = -a_{ji} \text{ for all } i, j \}$ \hfill \\
+    $W_6$ is the set of all $n\times n$ symmetric matrices, hence for
+    all $A \in W_6,{} A = -A^\intercal$. \hfill \\
+    Null matrix = $\textbf{0} =  
+    \begin{bmatrix}
+        0 & 0 & \cdots & 0 \\
+        0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\ 
+        0 & 0 & \cdots & 0
+    \end{bmatrix}$. It is clear that 
+    $\textbf{0} = \textbf{0}^\intercal$. Hence $\textbf{0} \in W_6$. \hfill \\
+    Let 
+    $C = \alpha A + \beta B$
+    , where $A, B \in W_6$ and $\alpha, \beta \in F$, then 
+    \begin{align*}
+        C^\intercal &= (\alpha A + \beta B)^\intercal \\
+                    &= (\alpha A)^\intercal + (\beta B)^\intercal \\
+                    &= -\alpha A^\intercal - \beta B^\intercal \\
+                    &= -(\alpha A + \beta B) \\
+                    &= -C
+    \end{align*}
+    which implies $C = -C^\intercal$ for all $A, B \in W_6$ and 
+    $\alpha, \beta \in F$, and hence $C \in W_6$. $W_6$ is a subspace
+    \item $W_7 = \{ A = M_{n\times n}(F) \left. \right\vert 
+    A = A^\theta \}$ \hfill \\
+    Null matrix = $\textbf{0} =  
+    \begin{bmatrix}
+        0 & 0 & \cdots & 0 \\
+        0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\ 
+        0 & 0 & \cdots & 0
+    \end{bmatrix}$. It is clear that 
+    $\textbf{0} = \textbf{0}^\theta$. Hence $\textbf{0} \in W_7$. \hfill \\
+    Let 
+    $C = \alpha A + \beta B$
+    , where $A, B \in W_7$ and $\alpha, \beta \in F$, then 
+    \begin{align*}
+        C^\theta &= (\alpha A + \beta B)^\theta \\
+                 &= (\overline{\alpha A + \beta B})^\top \\
+                 &= (\overline{\alpha A})^\intercal + (\overline{\beta B})^\intercal \\
+                 &= \overline{\alpha} \overline{A}^\intercal + \overline{\beta B}^\intercal \\
+                 &= \overline{\alpha} A^\theta + \overline{\beta} B^\theta \\
+                 &= \overline{\alpha} A + \overline{\beta} B
+    \end{align*}
+    which is not equal to $C$ for all $\alpha, \beta \in F$. 
+    For $F = \mathbb{R}, \; W_7$ is vector subpace but for 
+    $F = \mathbb{C}, \; W_7$ is not a subspace
+    \item $W_7 = \{ A = M_{n\times n}(F) \left. \right\vert 
+    A = -A^\theta \}$ \hfill \\
+    Null matrix = $\textbf{0} =  
+    \begin{bmatrix}
+        0 & 0 & \cdots & 0 \\
+        0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\ 
+        0 & 0 & \cdots & 0
+    \end{bmatrix}$. It is clear that 
+    $\textbf{0} = -\textbf{0}^\theta$. Hence $\textbf{0} \in W_7$. \hfill \\
+    Let 
+    $C = \alpha A + \beta B$
+    , where $A, B \in W_7$ and $\alpha, \beta \in F$, then 
+    \begin{align*}
+        C^\theta &= (\alpha A + \beta B)^\theta \\
+                 &= (\overline{\alpha A + \beta B})^\top \\
+                 &= (\overline{\alpha A})^\intercal + (\overline{\beta B})^\intercal \\
+                 &= \overline{\alpha} \overline{A}^\intercal + \overline{\beta B}^\intercal \\
+                 &= \overline{\alpha} A^\theta + \overline{\beta} B^\theta \\
+                 &= - (\overline{\alpha} A + \overline{\beta} B)
+    \end{align*}
+    which is not equal to $C$ for all $\alpha, \beta \in F$. 
+    For $F = \mathbb{R}, \; W_7$ is vector subpace but for 
+    $F = \mathbb{C}, \; W_7$ is not a subspace
+\end{enumerate}
+
+% ================================================================
+
+\begin{center}
+    \date{$10^{\text{th}}$ September 2021}
+\end{center}
+
+\subsection{Intersection of two subspaces}
+
+\begin{theorem}
+    Let $V$ be a vector space over the field F and $W_1$ and $W_2$ 
+    be two subspaces of the vector space $V$. Then $W = W_1 \cap W_2$ 
+    is also a subspace of $V$.
+    \begin{proof}
+        $W_1$ and $W_2$ are subspaces of $W$. Hence
+        \begin{align*}
+            & \bm{0} \in W_1 \text{ and } \bm{0} \in W_2 \\
+            \implies & \bm{0} \in W_1 \cap W_2 \\
+            \implies & W = (W_1 \cap W_2) \neq \bm{\phi}
+        \end{align*}
+        Let $\alpha, \beta \in F$ and $u, v \in W$. Since $u, v \in W$,
+        then $u, v \in W_1$ and $u, v \in W_2$ which implies 
+        $\alpha u + \beta v \in W_1$ and $\alpha u + \beta v \in W_2$,
+        because $W_1$ and $W_2$ are subspaces. 
+        Since $\alpha u + \beta v \in W_1$ and $\alpha u + \beta v \in W_2$, 
+        $\alpha u + \beta v \in W$ for all $\alpha, \beta \in F$ and 
+        hence $W = W_1 \cap W_2$ is a subspace.
+    \end{proof}
+\end{theorem}
+\begin{corollary}
+    Let $V$ be a vector space over the field F and $W_i$ the be 
+    arbitrary subspaces of the vector space $V$ where $i \in \mathbb{N}$. 
+    Then $W = \displaystyle\bigcap_{i = 1}^{\infty} W_i$ is also a 
+    subspace of $V$.
+\end{corollary}
+\subsection{Union of two subspaces}
+    \begin{theorem}
+        Union of two subspaces of the same vector space is a 
+        subspace if and only if one of them is contained in another.
+    \end{theorem}
+    \begin{proof}
+        Let $V$ be a vector space over the field F and $W_1$ and $W_2$ 
+        be two subspaces of the vector space $V$.
+        \begin{itemize}
+            \item \textbf{Forward: } $W = W_1 \cup W_2$ is a 
+            subspace (Hypothesis) \hfill \\
+            (Proof by contradiction) Let us assume that one doesn't 
+            contain other ($W_1 \not\subseteq W_2$ and 
+            $W_2 \not\subseteq W_1$). \\
+            \begin{tabularx}{\linewidth}{c c c}
+                $W_1 \not\subseteq W_2$
+                &
+                and
+                &
+                $W_2 \not\subseteq W_1$ \\
+                \begin{minipage}[c]{0.45\linewidth}
+                    There exists a $x \in W_1$ such that $x \notin W_2$,
+                    which implies $x \in W = W_1 \cup W_2$
+                \end{minipage}
+                &
+                &
+                \begin{minipage}[c]{0.45\linewidth}
+                    There exists a $y \in W_2$ such that $y \notin W_1$,
+                    which implies $y \in W = W_1 \cup W_2$
+                \end{minipage}
+            \end{tabularx}
+            \[
+                \because W \text{ is a subspace } \therefore x + y
+                \in W
+            \]
+            \[
+                \because x + y \in W, \text{ then either }
+            \]
+            \begin{tabularx}{\linewidth}{c c c}
+                $x + y \in W_1$ and $x \in W_1$
+                &
+                or
+                &
+                $x + y \in W_2$ and $y \in W_2$ \\
+                \begin{minipage}[c]{0.45\linewidth}
+                    $\because W_1$ is a subspace $(x + y) - x \in W_1$, 
+                    that is $y \in W_1$, which is a contradiction because
+                    $y \in W_2$ and $y \notin W_1$.
+                \end{minipage}
+                &
+                &
+                \begin{minipage}[c]{0.45\linewidth}
+                    $\because W_2$ is a subspace $(x + y) - y \in W_2$, 
+                    that is $x \in W_2$, which is a contradiction because
+                    $x \in W_1$ and $x \notin W_2$.
+                \end{minipage} \\ \\
+            \end{tabularx}
+            Hence our assumption that one subspace doesnt contain
+            other is false.
+            \item \textbf{Backward: } $W_1 \subseteq W_2$ or 
+            $W_2 \subseteq W_1$ (Hypothesis) \hfill \\
+            \begin{tabularx}{\linewidth}{c c c}
+                $W_1 \subseteq W_2$
+                &
+                or
+                &
+                $W_2 \subseteq W_1$ \\
+                \begin{minipage}[c]{0.45\linewidth}
+                    $W = W_1 \cup W_2 = W_2 \; (\because W_1 \subseteq W_2)$, 
+                    hence W is subspace
+                \end{minipage}
+                &
+                &
+                \begin{minipage}[c]{0.45\linewidth}
+                    $W = W_1 \cup W_2 = W_1 \; (\because W_2 \subseteq W_1)$, 
+                    hence W is subspace
+                \end{minipage}
+            \end{tabularx}
+        \end{itemize}
+    \end{proof}
+
+    \subsection{Sum of two subspaces}
+    
+    \begin{theorem}
+        Let $V$ be a vector space over the field F and $W_1$ and $W_2$ 
+        be two subspaces of the vector space $V$. Then $W = W_1 + W_2$ 
+        is also a subspace of $V$. 
+    \end{theorem}
+    \begin{proof}
+        $W = W_1 + W_2 = \{ w_1 + w_2 \; \left. \right\vert \; w_1 \in W_1 \text{ and } w_2 \in W_2 \}$. 
+        $\bm{0} \in W_1$ and $W_2$, hence $\bm{0} + \bm{0} = \bm{0}$
+        which also belongs to $W \neq \bm{\phi}$. For all $\alpha, 
+        \beta \in F$ and $x, y \in W$ consider
+        \[
+            \alpha\cdot x + \beta\cdot y = \alpha\cdot(u + v) + \beta\cdot(p + q)   
+        \]
+        where $x = u + v$ for some $u \in W_1$ and $v \in W_2$ and
+        $y = p + q$ for some $p \in W_1$ and $q \in W_2$. Therefore
+        \[            
+            \alpha\cdot x + \beta\cdot y = (\alpha u + \beta p) + 
+            (\alpha v + \alpha q) \\
+        \]
+        since $u, p \in W_1$ and $v, q \in W_2$
+        \[
+            \alpha x + \beta y = s + t  
+        \]
+        where $s \in W_1$ and $t \in W_2$ and therefore 
+        $\alpha x + \beta y \in W$ for all $\alpha, 
+        \beta \in F$ and $x, y \in W$. Hence $W$ is subspace of $V$
+    \end{proof}
+
+\section{Linear Dependency and Independency}
+
+    \subsection{Linear Combination}
+    \begin{definition}
+        Let $v$ be a vector of the vector space $V$. Then $v$ is a linear
+        combination of $u_1, u_2 \in V$ if there exist $c_1, c_2 \in F$
+        such that 
+        \[ \boxed{v = c_1u_1 + c_2u_2} \]
+        \textup{Generalized form: } For $u_1, u_2, \cdots, u_n \in V$
+        $v \in V$ is Linear Combination of $u_1, u_2, \cdots, u_n$ if
+        there exist $c_1, c_2 \cdots, c_n \in F$ such that
+        \[ \boxed{v = c_1u_1 + c_2u_2 + \cdots c_nu_n} \]
+    \end{definition}
+
+    \begin{theorem}
+        \label{lctheorem1}
+        Set of all possible linear combinations of 
+        $u_1, u_2, \cdots, u_n \in V$, forms a subspace of $V$ over 
+        the field $F$
+    \end{theorem}
+    \begin{proof}
+        The set $S = \{ c_1u_1 + c_2u_2 + \cdots + c_nu_n \in V \; \vert \; c_i \in F, \forall i's \}
+        = \left\{ \displaystyle\sum_i^n c_iu_i \left. \right\vert c_i \in F, \forall i's \right\} $. \hfill \\
+        Putting $c_i = 0$ for all $i$, we get the $\bm{0}$ vector, implying
+        $\bm{0} \in S$. Consider $u, v \in S$, then there exists 
+        $\alpha_1, \alpha_2, \cdots, \alpha_n$ and $\beta_1, \beta_2, 
+        \cdots \beta_n \in F$ such that
+        \begin{align*}
+            u &= \alpha_1u_1 + \alpha_2u_2 + \cdots + \alpha_nu_n \\
+            v &= \beta_1u_1 + \beta_2u_2 + \cdots + \beta_nu_n
+        \end{align*}
+        Then
+        \begin{align*}
+            u + v &= \alpha_1u_1 + \alpha_2u_2 + \cdots + \alpha_nu_n
+                    +
+                    \beta_1u_1 + \beta_2u_2 + \cdots + \beta_nu_n \\
+                  &= (\alpha_1 + \beta_1)u_1 + (\alpha_2 + \beta_2)u_2
+                     + \cdots +
+                     (\alpha_n + \beta_n)u_n
+        \end{align*}
+        since $\alpha_i, \beta_i \in F$ for all $i$'s $\implies$ 
+        $\alpha_i + \beta_i \in F$ for all $i$'s and hence $u + v
+        \in S$. \\
+        Let $\alpha \in F$, then 
+        \begin{align*}
+            \alpha u &= \alpha(\alpha_1u_1 + \alpha_2u_2 + \cdots + \alpha_nu_n) \\
+                     &= (\alpha\alpha_1)u_1 + (\alpha\alpha_2)u_2 + \cdots + (\alpha\alpha_n)u_n
+        \end{align*}
+        also belongs in S because for all $\alpha_1, \alpha_2, \cdots, 
+        \alpha_n \text{ and } \alpha \in F, \; \alpha\alpha_i \in F$ 
+        for all $i$'s. \\
+        Therefore S is subspace by Definition (\ref{subspacedef3}).
+    \end{proof}
+
+    \subsection{Span}
+    \begin{definition}
+        \label{span1}
+        Let $V$ be a vector space over the field $F$and $S \subseteq V$.
+        Then the set of all possible linear combinations of the set
+        $S$ is called the span of that set or the spanning set of $S$ 
+        and is written as $\textup{span(S)}$.
+        \begin{align*}
+            S &= \{ v_1, v_2, \cdots, v_n \} \\
+            \textup{span}(S) &= \{ c_1v_1 + c_2v_2 + \cdots + c_nv_n \vert c_i \in F, v_i \in S \} \\
+                           &= \left. \left\{ \displaystyle\sum_{i=1}^n c_iv_i \; \right\vert \; c_i \in F, v_i \in S \right\}
+        \end{align*}
+        \begin{center}
+            OR
+        \end{center}
+    \end{definition}
+    \begin{definition}
+        \label{span2}
+        Span $S$ is the intersection of all subspaces of $V$
+        containing $S$.
+    \end{definition}
+    \begin{corollary}
+        Let $V$ be a vector space over the field $F$ and 
+        $S \subseteq V$, then$\textup{ Span}(S)$ is a subspace of $V$.
+    \end{corollary}
+    \begin{proof}
+        For $S = \bm{\phi}$, from definition \textbf{(\ref{span2})} 
+        $S$ is subspace of $V$ and for $S \neq \bm{\phi}$, from
+        Definition \textbf{(\ref{span1})} and Theorem \textbf{(\ref{lctheorem1})}
+        $S$ is a subspace of $V$.
+    \end{proof}
+    
+    \subsection{Linearly Independent (L.I) and Linearly Dependent (L.D)}
+
+    \begin{definition}
+        Let $V$ be a vector space and $S = \{ v_1, v_2, \cdots,  v_n \}$ be a subset of $V$. 
+        Then the set S is \textbf{linearly independent} if
+        \[ 
+            c_1v_1 + c_2v_2 + \cdots + c_nv_n = 0 \implies c_i = 0 
+            \textup{ for all } i\textup{'s}    
+        \]
+        where $v_1, v_2, \cdots, v_n \in S$ and $c_1, c_2 \cdots, 
+        c_n \in F$. If it is not linearly independent then its 
+        \textbf{linearly dependent}, i.e there exists atleast one 
+        $c_i \neq 0$ when $c_1v_1 + c_2v_2 + \cdots + c_nv_n = 0$.
+    \end{definition}
+    \begin{theorem}
+        Let V be a vector space over the field F and S be a non
+        empty subset of V. S is linearly dependent if and only if
+        atleast one vector of $S$ can be written as a linear combination
+        of others.
+    \end{theorem}
+    \begin{proof}
+        Let $S = \{ v_1, v_2, \cdots v_n \}$ be non-empty subset of $V$. \hfill \\
+        \textbf{Forward: }$S$ is linearly dependent. There exists a $c_i \neq 0$
+        such that \[ c_1v_1 + \cdots + c_{j-1}v_{j-1} + c_jv_j + c_{j+1}v_{j+1} + \cdots + c_nv_n = 0 \]
+        Without loss of generality we assume $c_j \neq 0$.
+        \begin{align*}
+            \therefore \; & c_jv_j = - c_1v_1 - \cdots - c_{j-1}v_{j-1} - c_{j+1}v_{j+1} - \cdots - c_nv_n \\
+            & v_j = - \dfrac{c_1}{c_j}v_1 - \cdots - \dfrac{c_{j-1}}{c_j}v_{j-1} - \dfrac{c_{j+1}}{c_j}v_{j+1} - \cdots - \dfrac{c_n}{c_j}v_n \\
+            & v_j = k_1v_1 + \cdots + k_{j-1}v_{j-1} + k_{j+1}v_{j+1} + \cdots + k_nv_n
+    \end{align*}
+    which says that $v_j$ is the linear combination of the remaining 
+    vectors of $S$. \hfill \\
+    \textbf{Backward: }Atleast one vector of S can be written as 
+    remaining others. This implies that 
+    \begin{align*}
+        & v_i = c_1v_1 + \cdots + c_{i-1}v_{i-1} + c_{i+1}v_{i+1} + \cdots + c_nv_n \\
+        \implies &c_1v_1 + \cdots + c_{i-1}v_{i-1} + (-1)v_i + c_{i+1}v_{i+1} + \cdots + c_nv_n = 0
+    \end{align*}
+    Let $c_i = -1$, then the linear combination of the vectors of $S$
+    is 0 for atleast one $c_j \neq 0, (c_i = -1)$ and hence $S$ is linearly dependent.
+    \end{proof}
+
+    \subsubsection{Properties}
+    \begin{enumerate}
+        \item $S = \bm{\phi}$ is a Linearly Independent set.
+        \item $S = \{ v \}$ is a singleton set, then 
+        \begin{enumerate}
+            \item If $v \neq 0$, then $c\cdot v \implies c = 0$.
+            \item If $v = 0$, then $c\cdot v \implies c = 0$ for 
+            all values of $c$.
+        \end{enumerate}
+        Hence S is linearly independent if $v \neq 0$ else linearly
+        dependent.
+        \item If $S$ is linearly dependent set in $V$, then subset of $S$
+        may or may not be linearly dependent. \\
+        \textbf{Ex. }$S = \{ (0,1), (1,0), (1, 1), (2, 2) \} \hfill \\$
+        Consider $W_1 = \{ (0,1), (1,0) \} \subseteq S$ and $W_2 = \{ (1,1), (2,2) \} \subseteq S$.
+        $W_1$ is linearly independent and $W_2$ is linearly dependent
+        \item If $S$ is linearly dependent set in $V$, then superset
+        of $S$ is also linearly dependent.
+        \begin{proof}
+            Suppose $S = \{ v_1, v_2, \cdots, v_m \}$, and 
+            $W = \{ v_1, \cdots, v_m, v_{m+1} \cdots, v_n \}$ \\
+            Clearly $W \supseteq S$. Now consider the linear combination
+            of the vectors in $W$.
+            \[ \underbrace{c_1v_1 + c_2v_2 + \cdots + c_mv_m}_{\text{ = 0 for atleast one $c_j \neq 0$}} + c_{m+1}v_{m+1} + c_{m+2}v_{m+2} +\cdots + c_nv_n  \]
+            Therefore
+            \[ c_1v_1 + c_2v_2 + \cdots + c_mv_m + c_{m+1}v_{m+1} + c_{m+2}v_{m+2} +\cdots + c_nv_n = 0 \]
+            implies there exists atleast one $c_i = c_j \neq 0$.
+            Hence $W \supseteq S$ is linearly dependent.
+        \end{proof}
+        \item If $S$ is a linearly independent set in $V$ then any
+        subset of $S$ is also linearly independent.
+        \begin{proof}
+            \textbf{(Proof by contradiction)} Let us assume that a
+            subset $T$ of $S$ is linearly dependent, then the linear
+            combination 
+            \begin{equation}
+                c_1v_1 + c_2v_2 + \cdots + c_mv_m = 0
+                \implies \text{that there exist atleast one } c_i \neq 0, 1 \le i \le m
+            \end{equation}
+            Now consider the original set $S$ which is linearly independent.
+            The equation \[ c_1v_1 + c_2v_2 + \cdots + c_nv_n = 0 \]
+            implies that $c_i = 0$ for all $i$'s. Lets inspect the
+            linear combination more carefully.
+            \begin{align*}
+                & \underbrace{c_1v_1 + c_2v_2 + \cdots + c_mv_m}_{\text{ $= 0 \implies$ there exist a $c_j \neq 0$ }} 
+                + \, \underbrace{c_{m+1}v_{m+1} + c_{m+2}v_{m+2} + 
+                \cdots + c_nv_n}_{\text{ = 0 if we put $c_i = 0$ for all $i > n$  }} \\
+                & = 0
+            \end{align*}
+            Hence
+            \[ c_1v_1 + c_2v_2 + \cdots + c_mv_m + c_{m+1}v_{m+1} + c_{m+2}v_{m+2} + \cdots + c_nv_n = 0 \]
+            implies there exist a $c_j \neq 0$. This shows that
+            $S$ is a linearly dependent set which contradicts with
+            our assumption and proves $T$ is a linearly independent
+            set.
+        \end{proof}
+        \item If $S$ is a linearly independent set in $V$, then the
+        superset of $S$ may or may not be linearly independent. \hfill \\
+        \textbf{Ex. }$S = \{ (-1,0) \}$ and $T_1 = \{ (-1, 0), (0, 1) \}$
+        and $T_1 = \{ (-1, 0), (-2, 0) \}$ then, 
+        $T_1$ is linearly independent and $T_2$ is linearly dependent
+    \end{enumerate}
+
+\section{Basis}
+    \begin{itemize}[label=$\implies$]
+        \item span $S$ is the subspace of $V$
+        \item span $\bm{\phi} = {0}$
+        \item span $S$ is the intersection of all subspace of $V$ 
+        containing $S$
+        \item If $S$ is a subspace of $V$, then span $S = S$
+        \item span(span $S$) $= $ span $S$, span(span($\cdots$ span($S$)$\cdots$)) $=$ span $S$
+        \item If $S$ is a subspace, then span(span($\cdots$ span($S$)$\cdots$)) $=$ span $S$
+    \end{itemize}
+    \begin{definition}
+        Let $V$ be a vector space over the field $F$ and $B$ be non 
+        empty subset of $V$. Then $B$ is called the basis of $V$ if
+        \begin{enumerate}[label=\textup{(\alph*)}]
+            \item B is linearly independent
+            \item \textup{span($B$)} = $V$
+        \end{enumerate}
+    \end{definition}
+    \textbf{Dimension of a Basis: }The number of elements in the 
+    basis is called the dimension of that basis.
+    \begin{center}
+        OR
+    \end{center}
+    The cardinality of the basis is called its dimension. \hfill \\
+    $C(B) < \infty \implies V$ is a finite dimensional vector space \hfill \\
+    $C(B) \nless \infty \implies V$ is an infinite dimensional vector space \hfill \\
+    Number of Basis of any vector space can be infinite but dimension of a 
+    vector space is unique.
+
+    \subsection{Properties}
+        Let $S$ be a subset of $V$ and span($S$) = V
+        \begin{enumerate}
+            \item For any $w \in V$, $S = \{ u_1, u_2, \cdots, u_n \}$
+            then $S \cup \{ w \}$ also spans $V$, i.e span($S \cup \{ w \}$) $= V$
+            \item If any $u_i$ is a linear combination of $u_1, u_2,
+            \cdots, u_{i-1}$ then $S \setminus \{u_i\}$ also spans $V$, i.e
+            $$\text{span}\left( S\setminus \{ u_i \} \right) = V$$
+            \item Standard basis of the Euclidean space $\mathbb{R}^n$
+            is \[
+                    \{
+                    (1, 0 , \cdots, 0),
+                    (0, 1 , \cdots, 0),
+                    \cdots,
+                    (0, 0 , \cdots, 1)
+                    \}
+            \]
+            \item $P[x] = \{ a_0, a_1x + \cdots + a_nx_n + \cdots \; \vert \; a_i \in F \text{ for all }i \}$.
+            Then $$B = \{ 1, x, x^2, \cdots, x^n, \cdots \}$$
+            is the basis for $P[x]$
+            \item Let W be the set of all solution of the second order differential
+            equation 
+            \begin{equation}
+                \label{2nddeglinearde}
+                \dfrac{d^2y}{dx^2} + P(x)\dfrac{dy}{dx} + Q(x)y = 0
+            \end{equation}
+            Then W is forms a subspace.
+            \begin{proof}
+                $$W = \left\{ y(x) \; \middle| \; \dfrac{d^2y}{dx^2} + P(x)\dfrac{dy}{dx} + Q(x)y = 0 \right\}$$
+                $y(x) = 0$ satisfies equation (\ref{2nddeglinearde}). Hence
+                $y(x) = 0$ is a solution of the differential equation.
+                Let $y_1(x)$ and $y_2(x)$ be two solutions of (\ref{2nddeglinearde}),
+                then consider $\alpha y_1 + \beta y_2$.
+                \begin{align*}
+                    &\dfrac{d^2(\alpha y_1 + \beta y_2)}{dx^2} + P(x)\dfrac{d(\alpha y_1 + \beta y_2)}{dx} + Q(x)(\alpha y_1 + \beta y_2) \\
+                    &= \left( \alpha\dfrac{d^2y_1}{dx^2} + \alpha P(x)\dfrac{dy_1}{dx} + \alpha Q(x)y_1 \right)
+                    +  \left( \beta\dfrac{d^2y_2}{dx^2} + \beta P(x)\dfrac{dy_2}{dx} + \beta Q(x)y_2 \right) \\
+                    &= \alpha\left( \dfrac{d^2y_1}{dx^2} + P(x)\dfrac{dy_1}{dx} + Q(x)y_1 \right)
+                    +  \beta\left( \dfrac{d^2y_2}{dx^2} + P(x)\dfrac{dy_2}{dx} + Q(x)y_2 \right) \\
+                    &= 0 + 0 = 0
+                \end{align*}
+                Hence W is a subspace
+                The general solution $y$ of the above differential equation
+                is given by 
+                \begin{equation}
+                    \label{2nddeggensoln}
+                    y(x) = c_1y_1(x) + c_2y_2(x)
+                \end{equation} where $y_1(x)$ and
+                $y_2(x)$ are two solutions of (\ref{2nddeglinearde}).
+                From (\ref{2nddeggensoln}) we can say that any solution
+                can be written as the linear combination of $y_1$ and $y_2$.
+                Hence $y_1$ and $y_2$ spans $W$ and since (\ref{2nddeggensoln})
+                is the general solution $y_1$ and $y_2$ are linearly independent.
+                Therefore $B = \{ y_1, y_2 \}$ is the basis for $W$ whose
+                dimension is 2. \hfill \\
+                \textbf{Generalization: }Let W be the set of all solutions
+                of the differential equation
+                \begin{equation}
+                    \label{nthdeglinearde}
+                    a_n\dfrac{d^ny}{dx^n} + a_{n-1}(x)\dfrac{dy}{dx} + \cdots + a_0(x)y = 0
+                \end{equation}
+                Then $W$ forms a subspace(vector space?) and its basis is
+                given by $B = \{ y_1, y_2, \cdots, y_n \}$ with dimension
+                equal to the order of the D.E $= n$ and where $y_1, y_2, \cdots, y_n$ 
+                are the solutions of (\ref{nthdeglinearde}) and they form the 
+                general solution of (\ref{nthdeglinearde}), that
+                is \[ y = c_1y_1 + c_2y_2 + \cdots + c_ny_n \].
+            \end{proof}
+        \end{enumerate}
+        \begin{theorem}
+            Let V be finite dimensional vector space over the field F
+            and let L be the set of linearly independent vectors in
+            V and S be spanning set of V, then cardinality of L is 
+            less than or equal to cardinality of \textup{span($S$)}.
+        \end{theorem}
+        \begin{proof}
+            span($S$) = $V$ and $S$ can be either linearly independent or
+            linearly dependent. If $S$ is linearly independent then by definition
+            $S$ becomes the basis for $V$. If S is not linearly independent
+            then its linearly dependent and atleast one vector of $S$ can
+            be written as linear combination of other vectors of $S$ say
+            $v_1$. Since $S$ spans $V$, any vector $v \in V$ can be written
+            as linear combination of vectors in S.
+            \begin{align*}
+                v &= c_1v_1 + c_2v_2 + \cdots + c_nv_n \\
+                &= c_1(k_1v_2 + k_2v_3 + \cdots + k_{n-1}v_n) + c_2v_2 + \cdots + c_nv_n \\
+                &= (c_1k_1 + c_2)v_2 + (c_1k_2 + c_3)v_3 + \cdots + (c_1k_{n-1} + c_n)v_n \\
+                &= \alpha_2v_2 + \alpha_3v_3 + \cdots + \alpha_nv_n \\
+            \end{align*}
+            which implies there exists $\alpha_i$ for every $v \in V$ such
+            that $v$ can be written as a linear combination of vectors in
+            $S$. Hence span($S$) $= V$        
+        \end{proof}
+
+        \begin{theorem}
+            Let $V$ be a \textbf{finite dimensional vector space}, with
+            dimension of V equal to $\bm{n}$, then any subset of $V$ with 
+            $\bm{(n+1)}$ or more vectors is a linearly dependent set 
+            (it cannot form a basis for $V$).
+        \end{theorem}
+        
+        \setlength{\fboxsep}{1em}
+            \noindent\fbox{
+                \begin{minipage}[c]{0.935\linewidth}
+                    \textbf{Notes: }
+                    
+                    \noindent Let $V$ be a \textbf{finite 
+                    dimensional vector space}, with dim $V = n$ and $B$ be
+                    a subset of $V$ with $\bm{n}$ number of vectors, then
+
+                    If span($B$) = $V$, then $B$ is a basis of $V$.
+                    \begin{center}
+                        OR
+                    \end{center}
+                    If $B$ is linearly independent, then $B$ is a basis of $V$
+
+                    \textbf{That is for checking whether a subset $B$ of $V$ with $n$ 
+                    vectors is a basis of $V$ either check if it is Linearly
+                    Independent or if it spans $V$}
+
+                    Also the vector space $V = \{0\}$ has the set $B = \bm{\phi}$
+                    as its basis
+
+                \end{minipage}
+            }
+
+        \begin{theorem}
+            Let $V$ be a \textbf{finite dimensional vector space} over 
+            the field $F$ and $B$ be a subset of $V$. The set $B$ is a
+            basis for $V$ if and only if every vector of $V$ can be written
+            as a unique linear combination of the vectors in $B$.
+        \end{theorem}
+        \begin{proof}
+            \textbf{Forward direction: }$B = \{ u_1, u_2, \cdots, 
+            u_n \}$ is a basis for $V$.
+
+            \noindent Let's assume that there exist two distinct set of scalars
+            $\{ c_1, c_2, \cdots, c_n \}$ and $\{ k_1, k_2, \cdots, k_n \}$ 
+            for any vector $v \in V$ such that
+            $$ v = c_1u_1 + c_2u_2 + \cdots + c_nu_n $$
+            $$ v = k_1u_1 + k_2u_2 + \cdots + k_nu_n .$$
+            Substracting one from another, we get
+            $$ (c_1-k_1)u_1 + (c_2-k_2)u_2 + \cdots + (c_n-k_n)u_n = 0$$ 
+            since the vectors from the basis are all linearly 
+            independent we have $c_i = k_i$ for all $i$'s, which is a 
+            contradiction because they are suppose to be different 
+            from our assumption.
+            
+            \noindent\textbf{Backward direction: }every vector of 
+            $V$ can be written as a unique linear combination of 
+            the vectors in $B$.
+            
+            \noindent There exists a unique set of scalars 
+            $c_1, c_2, \cdots, c_n$ for every vector $v \in V$ 
+            such that $$ v = c_1u_1 + c_2u_2 + \cdots + c_nu_n $$
+            That is $B$ spans $V$. Now we have to show that the 
+            vectors in $B$ are linearly independent, for that consider
+            the $0$ vector. $$ 0 = 0\cdot u_1 + 0\cdot u_2 + \cdots + 0\cdot u_n. $$
+            Since this combination is unique, there is no other way
+            of writing the $0$ vector. This states that the equation
+            $$ c_1u_1 + c_2u_2 + \cdots + c_nu_n = 0 $$ has only one
+            solution and that is $c_i = 0$ for all $i$'s. Hence $B$ is
+            a basis for $V$
+
+        \end{proof}
+
+    \subsection{How to check whether a set is a basis?}
+    
+        Suppose dimension of $V$ is $n$ and $S$ is a subset of $V$
+        to be checked for basis.
+        \begin{center}
+            dim $V = n$ and $S \subseteq V$
+        \end{center}
+
+        \begin{minipage}[c]{0.9\linewidth}
+            \begin{tabularx}{\linewidth}{p{0.33\linewidth} p{0.33\linewidth} p{0.33\linewidth}}
+                If $\bm{|S| < n}$, then $S$ can never span $V$ and hence $S$ 
+                is not a basis of $V$
+                &
+                If $\bm{|S| = n}$, then check either $S$ is linearly independent 
+                or span($S$) $= V$ for it to be a basis of $V$
+                &
+                If $\bm{|S| > n}$, then $S$ becomes L.D and hence $S$ cannot form 
+                a basis of $V$
+            \end{tabularx}
+        \end{minipage}
+
+        \begin{theorem}
+            Let $V$ be a finite dimensional vector space over the field
+            $F$, and $W$ be its subspace, then $\textbf{\textup{dim}
+            W} \le \textbf{\textup{dim} V}$
+        \end{theorem}
+    
+    \subsection{Ordered basis and Direct Sum}
+        \begin{description}
+            \item[Coordinate vector:] Let V be a finite dimensional
+            vector space over the field $F$ and B be a basis of V
+            ($B = \{ v_1, v_2, \cdots, v_n \} $). Then for any 
+            $v \in V$, $$v = c_1v_1 + c_2v_2 + \cdots + c_nv_n$$
+            and $$
+                    \bm{[v]}_B = \begin{bmatrix}
+                                c_1 \\ c_2 \\ \vdots \\ c_n
+                            \end{bmatrix}
+                $$
+            where $\bm{[v]}_B$ is called the coordinate vector of $v$ 
+            w.r.t the basis $B$.
+            \item[Direct Sum:] Let $W_1$ and $W_2$ be two sub-spaces
+            of a vector space $V$, then $W_1 + W_2$ is called the 
+            direct sum of $V$ if every member of $V$ can be uniquely 
+            expressed as $w_1 + w_2$, where $w_1 \in W_1$ and 
+            $w_2 \in W_2$. The direct sum of $V$ is denoted by
+            $W_1 \bigoplus W_2$
+            \item[Examples of finding the basis: ]
+        \end{description}
+
+        \begin{theorem}
+            Let $W_1$ and $W_2$ be two subspaces of $V$, then 
+            $W_1 + W_2$ is said to be the direct sum of $V$ if and 
+            only if $W_1 \cap W_2 = \{ 0 \}$
+        \end{theorem}
+
+        \setlength{\fboxsep}{1em}
+        \noindent\fbox{
+            \begin{minipage}[c]{0.93\linewidth}
+                \textbf{Note: }
+                \begin{itemize}
+                    \item dim($\mathbb{C}^n(\mathbb{R})) = 2n$
+                    \item dim($\mathbb{C}^n(\mathbb{C})) = n$
+                \end{itemize}
+                $$\text{dim($W_1 \cup W_2$)} = \text{dim $W_1$}
+                + \text{dim $W_2$} - \text{dim($W_1 \cap W_2$)}$$
+                
+            \end{minipage}
+        }
+
+\section{Linear Transformation}
+    \begin{definition}
+        Let $V$ and $W$ be two vector spaces over the same field $F$. Then
+        $T : v \rightarrow W$ is said to be a linear transformation if 
+        \begin{enumerate}[label=(\alph*)]
+            \item For all $u, v \in V$, $T(u + v) = T(u) + T(v)$
+            \item For all $\alpha \in F$ and $u \in V$, $T(\alpha u) = \alpha T(u)$
+        \end{enumerate}
+        \begin{center}
+            OR
+        \end{center}
+        For all $\alpha, \beta \in F \text{ and }u, v \in V$, $T(\alpha u + \beta v) = \alpha T(u) + \beta T(v)$    
+    \end{definition}
+    \textbf{Note: }
+    \begin{enumerate}[label=(\roman*)]
+        \item If $T(0) \neq 0$, then the map $T$ is not a linear transformation,
+        where $0 \in V$ and $W$
+    \end{enumerate}
+
+    \subsection{Special Transformations}
+        \begin{enumerate}[label=\textbf{\arabic*}]
+            \item \textbf{Identity Transformation: }Let $V$ be a vector 
+            space over the field $F$, define $I: V \rightarrow V$
+            such that \[ T(v) = v \] for all $v \in V$, then $I$ is a linear
+            transformation
+            \begin{proof}
+                Consider $\alpha, \beta \in F$ and $v, u \in I$, then 
+                \begin{align*}
+                    I(\alpha u + \beta v) &= \alpha u + \beta v \quad 
+                    \text{since} \quad \alpha u + \beta v \in V \\
+                                        &= \alpha I(u) + \beta I(v)
+                \end{align*}
+                Therefore $I$ is a linear transformation.
+            \end{proof}
+            \item \textbf{Zero Transformation: }Let $V, W$ be two subspaces 
+            of the vector space $V$ over the field $F$, then the map
+            $O: V \rightarrow W$ where $$O(v) = 0$$ is called the 
+            linear transformation.
+            \begin{proof}
+                Consider $\alpha, \beta \in F$ and $v, u \in O$, then 
+                \begin{align*}
+                    O(\alpha u + \beta v) &= 0 \quad 
+                    \text{since} \quad \alpha u + \beta v \in V \\
+                    \alpha O(v) + \beta O(u) &= \alpha 0 + \beta 0 \\
+                                            &= 0 \\
+                    \therefore O(\alpha u + \beta v) &= \alpha u + \beta v
+                \end{align*}
+                Hence O is a linear transformation.
+            \end{proof}
+        \end{enumerate}
+    
+    \subsection{Null Space (Kernel) and Range Space of $T$}
+        Let $T$ be a linear transformation from $V$ to $W$, 
+        $T: V \rightarrow W$. Then 
+        $$ N(T) = \text{ker($T$)} = \{ x \in V \; | \; T(x) = 0 \} $$
+        
+        \textbf{Note:} Null space of any linear transformation is always
+        non empty because $T(0)$ is always equal to $0$ for any linear 
+        transformation $T$.
+
+        \begin{theorem}
+            Let $V$ and $U$ be vector spaces over the same field $F$. 
+            Let $T: V \rightarrow W$ be a linear transformation, then
+            $N(T)$ is a subspace of $V$
+        \end{theorem}
+        \begin{proof}
+            Since $T$ is a linear transformation, $T(0) = 0$, hence
+            $0 \in N(T)$ and $N(T) \neq \bm{\phi}$ and also 
+            $N(T) \subseteq V$. Now consider $\alpha, \beta \in F$ and 
+            $u, v \in N(T)$, then $T(u) = T(v) = 0$.
+            \begin{align*}
+                T(\alpha u + \beta v) &= \alpha\cdot T(u) + \beta\cdot T(v) \\
+                                                  &= \alpha\cdot 0 + \beta\cdot 0 \\
+                                                  &= 0
+            \end{align*}
+            Therefore $\alpha u + \beta v$ also belongs to $N(T)$, which
+            implies $N(T)$ is a subspace of $V$
+        \end{proof}
+        
+        \noindent \textbf{Nullity of T: }The dimension of the Null
+        Space of any L.T $T$ is called the nullity of $T$, It is 
+        represented as $\bm{\eta(T)}$
+        
+        \noindent \textbf{For a finite dimensional vector space 
+        $V$, dim($N(T)$) $\le$ dim($V$)}
+    \subsection{Examples}
+        \begin{enumerate}[label=\textbf{\arabic*}]
+            \item $T: P_4(x) \rightarrow P_3(x)$ and 
+            $T\left(p(x)\right) = \displaystyle\int_0^x p(t) dt$
+            \item[] The linear transformation is not well defined, all
+            polynomials of degree $\ge 3$ lie outside of the codomain
+            \item $T: P(x) \rightarrow P(x)$ and 
+            $T\left(p(x)\right) = \displaystyle\int_0^x p(t) dt$
+            \begin{align*}
+                T(\alpha p + \beta q) &= \displaystyle\int_0^x \left(\alpha p(t) + \beta q(t)\right) dt \\
+                                    &= \alpha\displaystyle\int_0^x p(t) dt + \beta\displaystyle\int_0^x q(t) dt \\
+                                    &= \alpha T(p) + \beta T(q)
+            \end{align*}
+            \item $T: P(x) \rightarrow P(x)$ and 
+            $T\left(p(x)\right) = p''(x)$
+            \item[] It is a linear transformation.
+            \item $T: P(x) \rightarrow P(x)$ and 
+            $T\left(p(x)\right) = p'(x)$
+            \item[] It is a linear transformation. 
+            \item $T: P(x) \rightarrow P(x)$ and 
+            $T\left(p(x)\right) = p''(x) + p(x)$
+            \item[] It is a linear transformation. 
+        \end{enumerate}
+        \begin{theorem}
+            Let $T: V \rightarrow W$ be a linear transformation, where
+            $V$ and $W$ are vector spaces over a same field $F$. If $S =
+            \{ v_1, v_2, \cdots, v_n \}$ be a spanning set of $V$, then the
+            set $\{ T(v_1), T(v_2), \cdots, T(v_n) \}$, say $R$ is the
+            spanning set of the range space of $T$.
+        \end{theorem}
+        \begin{proof}
+            Range space of $T = \{ w \in W\bigm\vert \exists v \in V, w = 
+            T(v) \}$ and since span($S$) $= V$, for every $v 
+            \in V$ there exists scalars $c_1, c_2, \cdots, c_n$ from 
+            the field $F$ such that 
+            \begin{align*}
+                v    &= c_1v_1 + c_2v_2 + \cdots + c_nv_n \\
+                T(v) &= T(c_1v_1 + c_2v_2 + \cdots + c_nv_n) \\
+                w    &= c_1T(v_1) + c_2T(v_2) + \cdots + c_nT(v_n)
+            \end{align*}
+            Hence $R = \{ T(v_1), T(v_2), \cdots, T(v_n) \}$ spans the
+            range space of $T$.
+        \end{proof}
+        \begin{theorem}
+            Let $T: V \rightarrow W$ be a linear transformation, where
+            $V$ and $W$ are vector spaces over a same field $F$ and S =
+            $\{v_1, v_2, \cdots, v_n\}$ be a subset of $V$. If the
+            set $\{T(v_1), T(v_2), \cdots, T(v_n)\}$ is linearly independent
+            set, then S is also a linearly independent set.
+        \end{theorem}
+        \begin{proof}
+            Consider the equation \[ c_1v_1 + c_2v_2 + \cdots + c_nv_n = 0 \]
+            where $c_i$'s are scalars from the field $F$. Then 
+            \begin{align*}
+                T(c_1v_1 + c_2v_2 + \cdots + c_nv_n) &= T(0) \\
+                c_1T(v_1) + c_2T(v_2) + \cdots + c_nT(v_n) &= 0 
+            \end{align*}
+            since $\{T(v_1), T(v_2), \cdots, T(v_n)\}$ is an L.I set,
+            $c_1 = c_2 = \cdots = c_n = 0$. We jus showed that 
+            $$c_1v_1 + c_2v_2 + \cdots + c_nv_n = 0 \implies c_1 = c_2 = 
+            \cdots = c_n = 0$$. Hence $\{ v_1, v_2, \cdots, v_n \}$ is
+            linearly independent.
+        \end{proof}
+        \begin{theorem}
+            Let $V$ and $W$ be two finite dimensional vector spaces over F
+            and $\{ v_1, v_2, \cdots, v_n \}$ be a basis for $V$ and 
+            $u_1, u_2, \cdots, u_n$ be any vectors in $W$. Then there 
+            exists a \textbf{unique} Linear Transformation from $V$ to 
+            $W$ such that $T(v_i) = u_i$ for $1 \le i \le n$
+        \end{theorem}
+        \begin{proof}
+            Lenghty, hence skipped.
+        \end{proof}
+        \begin{theorem}
+            Let $T: V \rightarrow W$ be a linear transformation and $V$
+            is a \textbf{finite dimensional vector space}. Then 
+            \[ \eta(T) + \rho(T) = \textup{dim }V \]
+            \begin{center}
+                OR
+            \end{center}
+            \[ \textup{dim }N(T) + \textup{dim }R(T) = \textup{dim }V \]
+        \end{theorem}
+        \begin{proof}
+            skipped.
+        \end{proof}
+
+    \subsection{Algebra of Linear Transformation}
+        \begin{theorem}
+            Let $T: V \rightarrow W and S: V \rightarrow W$ be two linear
+            transformation, then their sum $T + S$ and the scalar multiplication
+            $cT, c \in F$ are also linear transformations. $V, W, F, c$ have 
+            their regular meanings.
+        \end{theorem}
+        \begin{corollary}
+            Let \textup{Hom($V, W$)} be the set of all linear transformations from vector
+            spaces $V \rightarrow W$ over the same field $F$, then \textup{Hom($V, W$)} forms
+            a subspace of the vector space of all functions or maps.
+        \end{corollary}
+        If dim($V$) $= m$, dim($W$) $= n$, then dim(Hom($V, W$)) $= mn$
+        \begin{theorem}
+            Let $T: V \rightarrow W$ and $S: W \rightarrow V$ be two linear
+            transformations, then $T \circ S$ and $S \circ T$ are also linear
+            transformations from W to W and V to V respectively.
+        \end{theorem}
+        \begin{proof}
+            For all $u, v \in V$ and $\alpha, \beta \in F$ the expression
+            \begin{align*}
+                (T \circ S)(\alpha u + \beta v) &= T(S(\alpha u + \beta v)) \\
+                                                &= T(S(\alpha u) + S(\beta v)) \\
+                                                &= T(\alpha S(u) + \beta S(v)) \\
+                                                &= T(S(\alpha u)) + T(S(\beta v)) \\
+                                                &= \alpha T(S(u)) + \beta T(S(v)) \\
+                                                &= \alpha (T \circ S)(u) + \beta (T \circ S)(v)
+            \end{align*}
+        \end{proof}
+    
+    \subsection{Invertible Maps}
+        \begin{theorem}
+            Let $T: V \rightarrow V$ be a linear transformation where $V$
+            is a \textbf{finite dimensional vector space}, then
+            \begin{align*}
+                \textup{ker($T$)} = 0 & \iff \textup{ $T$ is one-one} \\
+                                      & \iff \textup{ $T$ is onto} \\
+                                      & \iff \textup{ $T$ is bijective} \\
+                                      & \iff \textup{ $T$ is invertible} \\
+                                      & \iff \textup{ $T$ is non singular}
+            \end{align*}
+        \end{theorem}
+        \setlength{\fboxsep}{1em}
+        \noindent\fbox{
+            \begin{minipage}[c]{0.93\linewidth}
+                \textbf{Note: } For the linear transformation
+                $T: V \rightarrow W$
+                \begin{enumerate}
+                    \item If dim($V$) is finite, then
+                    \begin{align*}
+                        \textup{ker($T$)} = 0 & \iff \textup{ $T$ is one-one} \\
+                                              & \iff \textup{ $T$ is non singular}
+                    \end{align*}
+                    \item If dim($V$) $=$ dim($W$), then
+                    \begin{align*}
+                        \textup{ker($T$)} = 0 & \iff \textup{ $T$ is one-one} \\
+                                              & \iff \textup{ $T$ is onto} \\
+                                              & \iff \textup{ $T$ is bijective} \\
+                                              & \iff \textup{ $T$ is invertible} \\
+                                              & \iff \textup{ $T$ is non singular}
+                    \end{align*}
+                \end{enumerate}
+            \end{minipage}
+        }
+    \subsection{Matrix Representation}
+        \begin{definition}
+            $T: V \rightarrow V$ be a Linear Transformation where $V$
+            is a \textbf{finite dimensional vector space}. Let $\{
+            v_1, v_2, \cdots, v_n\}$ be a basis of $V$. Then matrix
+            representation of $T$ with respect to $B$ is given as $\bm{[T]_B}$
+            \begin{align*}
+                T(v_1) &= a_{11}v_1 + a_{12}v_2 + \cdots + a_{1n}v_n \\
+                T(v_2) &= a_{21}v_1 + a_{22}v_2 + \cdots + a_{2n}v_n \\
+                \cdots \\
+                T(v_n) &= a_{n1}v_1 + a_{n2}v_2 + \cdots + a_{nn}v_n
+            \end{align*}
+            $
+                \bm{[T]_B} = 
+                        \begin{bmatrix}
+                            a_{11} & a_{12} & \cdots & a_{1n} \\
+                            a_{21} & a_{22} & \cdots & a_{2n} \\
+                            \vdots & \vdots & \ddots & \vdots \\
+                            a_{n1} & a_{n2} & \cdots & a_{nn}
+                        \end{bmatrix} ^ \intercal
+            $
+        \end{definition}
+        $$[T]_{B_1} \sim [T]_{B_2} \sim \cdots [T]_{B_n} \sim \cdots $$
+        By similar we mean the matrix representations have \textbf{%
+        same eigen values, trace, detereminant} (for a linear 
+        operator, i.e a transformation from $V$ to $V$)
+
+    \section{Eigen Values and Eigen Vectors}
+        \begin{definition}
+            
+        \end{definition}
+\end{document}
