@@ -1188,7 +1188,7 @@ be a Vector space over field F.
                 c_1T(v_1) + c_2T(v_2) + \cdots + c_nT(v_n) &= 0 
             \end{align*}
             since $\{T(v_1), T(v_2), \cdots, T(v_n)\}$ is an L.I set,
-            $c_1 = c_2 = \cdots = c_n = 0$. We jus showed that 
+            $c_1 = c_2 = \cdots = c_n = 0$. We just showed that 
             $$c_1v_1 + c_2v_2 + \cdots + c_nv_n = 0 \implies c_1 = c_2 = 
             \cdots = c_n = 0$$. Hence $\{ v_1, v_2, \cdots, v_n \}$ is
             linearly independent.
@@ -1203,7 +1203,7 @@ be a Vector space over field F.
         \begin{proof}
             Lenghty, hence skipped.
         \end{proof}
-        \begin{theorem}
+        \begin{theorem} \textup{\textbf{Rank Nullity Theorem}}
             Let $T: V \rightarrow W$ be a linear transformation and $V$
             is a \textbf{finite dimensional vector space}. Then 
             \[ \eta(T) + \rho(T) = \textup{dim }V \]
@@ -1336,9 +1336,50 @@ be a Vector space over field F.
         By similar we mean the matrix representations have \textbf{%
         same eigen values, trace, detereminant} (for a linear 
         operator, i.e a transformation from $V$ to $V$)
-
-    \section{Eigen Values and Eigen Vectors}
+    
+    \subsection{Change of Basis}
         \begin{definition}
-            
+            Let $T: V \to V$ be a linear transformation and $B_1$ 
+            and $B_2$ be two bases of $V$. $B_1 = \{ v_1, v_2, 
+            \cdots, v_n \}$ and $B_2 = \{ u_1, u_2, \cdots, u_n \}$.
+            Then 
+            \begin{align*}
+                v_1 &= a_{11}u_1 + a_{12}u_2 + \cdots + a_{1n}u_n \\
+                v_2 &= a_{21}u_1 + a_{22}u_2 + \cdots + a_{2n}u_n \\
+                \vdots \\
+                v_n &= a_{n1}u_1 + a_{n2}u_2 + \cdots + a_{nn}u_n
+            \end{align*}
+            and
+            $$
+                \bm{[T]_{B_1}^{B_2}} = 
+                        \begin{bmatrix}
+                            a_{11} & a_{12} & \cdots & a_{1n} \\
+                            a_{21} & a_{22} & \cdots & a_{2n} \\
+                            \vdots & \vdots & \ddots & \vdots \\
+                            a_{n1} & a_{n2} & \cdots & a_{nn}
+                        \end{bmatrix} ^ \intercal
+            $$ is called the change of basis matrix from $B_2$
+            to $B_1$
         \end{definition}
+
+        \noindent \textbf{Basically change of basis gives us a 
+        matrix which maps coordinate vectors from one basis to 
+        another, that is $\bm{[T]_{B_1}^{B_2}}$ maps coordinate
+        vector of vector in $B_2$ basis to coordinate vector of the
+        same vector in $B_1$ basis}
+
+        \vspace*{1em}
+        \noindent\textbf{Note: }If $P = [T]_{B_1}^{B_2}$ and $Q =
+        [T]_{B_2}^{B_1}$, then
+        \begin{itemize}
+            \item $P$ and $Q$ are invertible matrices
+            \item $P$ and $Q$ are inverses of each other
+            $$P^{-1} = Q \text{ and } Q^{-1} = P \text{ and }
+            PQ = I = QP $$
+        \end{itemize}
+    
+\section{Eigen Values and Eigen Vectors}
+    \begin{definition}
+        
+    \end{definition}
 \end{document}
