@@ -1380,6 +1380,22 @@ be a Vector space over field F.
     
 \section{Eigen Values and Eigen Vectors}
     \begin{definition}
-        
+        Let $T: V \to V$. If for a non zero vector $v \in V$ there
+        exists a scalar $\lambda \in F$, such that \[ T(v) = \lambda v \],
+        then $\lambda$ is called the eigen value of $T$ and $v$ is
+        called the eigen vector of $T$ corresponding to the eigen value
+        $\lambda$.
     \end{definition}
+    \subsection{How to find Eigen Values ?}
+        We know that $T(v) = \lambda v \implies (T-\lambda I)v = 0$.
+        Find the null space of the transformation $(T-\lambda I)$. 
+        
+        OR
+        
+        Since $T: V \to V$, take any matrix representation of $T$
+        w.r.t to any basis $B$, i.e $[T]_B = A$ and then plug it in
+        the equation $(T-\lambda I)v = 0$. We are looking for non
+        zero $v$'s, if any exists, hence for that we should make the
+        matrix $A - \lambda I$ singular. Solve det($A - \lambda I$)
+        for $\lambda$
 \end{document}
