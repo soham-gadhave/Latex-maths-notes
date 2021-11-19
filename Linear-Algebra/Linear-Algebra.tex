@@ -98,8 +98,6 @@ be a Vector space over field F.
     \item[]  
 \end{description}
 
-
-
 \section{Vector Subspaces}
 
 % ================================================================
@@ -1351,22 +1349,51 @@ be a Vector space over field F.
             \end{align*}
             and
             $$
-                \bm{[T]_{B_1}^{B_2}} = 
+                \bm{[T]_{B_2}^{B_1}} = 
                         \begin{bmatrix}
                             a_{11} & a_{12} & \cdots & a_{1n} \\
                             a_{21} & a_{22} & \cdots & a_{2n} \\
                             \vdots & \vdots & \ddots & \vdots \\
                             a_{n1} & a_{n2} & \cdots & a_{nn}
                         \end{bmatrix} ^ \intercal
-            $$ is called the change of basis matrix from $B_2$
-            to $B_1$
+            $$ is called the change of basis matrix from $B_1$
+            to $B_2$
         \end{definition}
+        
+        \begin{center}
+            OR
+        \end{center}
 
+        \begin{definition}
+            Let $T: V \to W$ be a linear transformation and $B_1$ 
+            and $B_2$ be the bases of $V$ and $W$ respectively. 
+            $B_1 = \{ v_1, v_2, \cdots, v_m \}$ and $B_2 = \{ u_1, 
+            u_2, \cdots, u_n \}$.
+            Then 
+            \begin{align*}
+                T[v_1] &= a_{11}u_1 + a_{12}u_2 + \cdots + a_{1n}u_n \\
+                T[v_2] &= a_{21}u_1 + a_{22}u_2 + \cdots + a_{2n}u_n \\
+                \vdots \\
+                T[v_m] &= a_{m1}u_1 + a_{m2}u_2 + \cdots + a_{mn}u_n
+            \end{align*}
+            and
+            $$
+                \bm{[T]_{B_2}^{B_1}} = 
+                        \begin{bmatrix}
+                            a_{11} & a_{12} & \cdots & a_{1n} \\
+                            a_{21} & a_{22} & \cdots & a_{2n} \\
+                            \vdots & \vdots & \ddots & \vdots \\
+                            a_{m1} & a_{m2} & \cdots & a_{mn}
+                        \end{bmatrix} ^ \intercal
+            $$ is called the change of basis matrix from $B_1$
+            to $B_2$
+        \end{definition}
+        
         \noindent \textbf{Basically change of basis gives us a 
         matrix which maps coordinate vectors from one basis to 
-        another, that is $\bm{[T]_{B_1}^{B_2}}$ maps coordinate
-        vector of vector in $B_2$ basis to coordinate vector of the
-        same vector in $B_1$ basis}
+        another, that is $\bm{[T]_{B_2}^{B_1}}$ maps coordinate
+        vector of vector in $B_1$ basis to coordinate vector of the
+        same vector in $B_2$ basis}
 
         \vspace*{1em}
         \noindent\textbf{Note: }If $P = [T]_{B_1}^{B_2}$ and $Q =
@@ -1376,8 +1403,13 @@ be a Vector space over field F.
             \item $P$ and $Q$ are inverses of each other
             $$P^{-1} = Q \text{ and } Q^{-1} = P \text{ and }
             PQ = I = QP $$
+            \item $[T]_{B_1}^{B_2} = [u_1 u_2 \cdots u_n]$ where
+            $B_1$ is a standard basis and $B_2 = \{ u_1, u_2, \cdots u_n \}$ 
+            is any other basis.
         \end{itemize}
     
+        
+
 \section{Eigen Values and Eigen Vectors}
     \begin{definition}
         Let $T: V \to V$. If for a non zero vector $v \in V$ there
