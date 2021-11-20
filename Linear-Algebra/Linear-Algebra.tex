@@ -13,6 +13,15 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 
+\newcommand{\floor}[1]
+{
+    \left\lfloor #1 \right\rfloor
+}
+\newcommand{\ceil}[1]
+{
+    \left\lceil #1 \right\rceil
+}
+
 \title{Linear Algebra}
 \author{Soham Gadhave}
 \date{$5^{\text{th}}$ September 2021}
@@ -1432,4 +1441,73 @@ be a Vector space over field F.
         zero $v$'s, if any exists, hence for that we should make the
         matrix $A - \lambda I$ singular. Solve det($A - \lambda I$)
         for $\lambda$
+
+        \noindent det($ A - \lambda I $) = characteristic polynomial
+        \noindent det($ A - \lambda I $) = 0 $\lambda \to $ eigen 
+        values / eigen roots / latent roots / characteristics 
+        
+        \subsubsection{2$\times$2 and 3$\times$3 charateristics polynomial}
+            \begin{align*}
+                A_{2\times2} &\implies \lambda ^2 - (\text{trace})\lambda
+                + \text{det($A$)} = 0 \\
+                A_{3\times3} &\implies \lambda ^3 - (\text{trace})\lambda ^2
+                + (\text{sum of cofactors of diagonal elements})\lambda
+                - \text{det($A$)} = 0
+            \end{align*}
+
+        \subsubsection{Special Matrices and their Eigen Values}
+            \begin{center}
+                \begin{tabular}{ |p{0.45\linewidth}|p{0.45\linewidth}| }
+                    \hline
+                        \textbf{Matrix} & \textbf{Eigen Values} \\
+                    \hline
+                        diagonal matrix & diagonal entries \\
+                    \hline
+                        upper triangular matrix & diagonal entries \\
+                    \hline
+                        lower triangular matrix & diagonal entries \\
+                    \hline
+                        sum of each row or each column is $s$ & $s$ is an 
+                        eigen value \\
+                    \hline
+                        det($A$) = 0 & $0$ is an eigen value \\
+                    \hline
+                    scalar matrix 
+                        $\begin{bmatrix*}
+                            c & 0 & \cdots & 0 \\
+                            0 & c & \cdots & 0 \\
+                            \vdots & \vdots & \ddots & \vdots \\
+                            0 & 0 & \cdots & c
+                        \end{bmatrix*}$ 
+                    & %
+                        c \\
+                    \hline
+                    Back Diagonal Matrix of even order, example
+                        $\begin{bmatrix*}
+                            0 & 0 & 0 & 1 \\
+                            0 & 0 & 2 & 0 \\
+                            0 & 3 & 0 & 0 \\
+                            4 & 0 & 0 & 0 
+                        \end{bmatrix*}$
+                    & %
+                        $\pm\sqrt{a_{n, n-i}\cdot a_{i, n-1}}$, where 
+                        $n$ is the order and $i$ varies from 1 to
+                        $\dfrac{n}{2}$, that is $\pm\sqrt{4\cdot 1}, 
+                        \pm\sqrt{3\cdot 2}$ \\
+                    \hline
+                    Back Diagonal Matrix of odd order, example
+                        $\begin{bmatrix*}
+                            0 & 0 & 1 \\
+                            0 & 2 & 0 \\
+                            3 & 0 & 0 \\
+                        \end{bmatrix*}$
+                    & %
+                        $\pm\sqrt{a_{n, n-i}\cdot a_{i, n-1}}$, where 
+                        $n$ is the order and $i$ varies from 1 to
+                        $\floor{\dfrac{n}{2}}$ and $a_{kk}$, where k
+                        is $\ceil{\dfrac{n}{2}}$, that is $\pm\sqrt{1\cdot 3}, 
+                        2$ \\
+                    \hline
+                \end{tabular}
+            \end{center}
 \end{document}
