@@ -1510,4 +1510,112 @@ be a Vector space over field F.
                     \hline
                 \end{tabular}
             \end{center}
+        \begin{definition} \textup{\textbf{Eigen Space of a Transformation}}
+            Let $T: V \to V$ be a linear transformation, where $V$ is a vector
+            space over the field $F$ and $\lambda_1, \lambda_2, \cdots,
+            \lambda_n$ be its eigen values, then consider the sets
+            \begin{align*}
+                E_{\lambda_1} &= \{v \in V \; | \; T(v) = \lambda_1 v \} \\            
+                E_{\lambda_2} &= \{v \in V \; | \; T(v) = \lambda_2 v \} \\
+                \vdots \\
+                E_{\lambda_n} &= \{v \in V \; | \; T(v) = \lambda_n v \}
+            \end{align*}
+            These sets are called the Eigen Space of $\lambda_n$. In general 
+            $$E_{\lambda} = \{v \in V \; | \; T(v) = \lambda v \}$$ is called
+            the Eigen space of $\lambda$ for linear transformation $T$.
+        \end{definition}
+
+        \begin{theorem}
+            The Eigen space $E_{\lambda}$ of $\lambda$ for linear
+            transformation $T: V \to V$ is a subspace of $V$, where
+            $V$ is a vector space over the field $F$.
+        \end{theorem}
+        \begin{proof}
+            Trivial
+        \end{proof}
+        \noindent\textbf{Note: }ker($T - \lambda I) = E_{\lambda}$.
+        Kernal of $T - \lambda I$ can be written as $\{ v \in V \; |
+        \; (T-\lambda I)v = 0 \}$
+
+        \subsection{Algebraic and Geometric Multiplicity of an Eigen Value}
+        \begin{definition}
+            \textup{\textbf{Algebraic Multiplicity (AM)}} The AM of
+            an eigen value $\lambda$ is the number of times it has occured.
+        \end{definition}
+
+        \begin{definition}
+            \textup{\textbf{Geometric Multiplicity (GM)}} The GM of
+            an eigen value $\lambda$ is equal to the number of linearly
+            independent vectors corresponding to the eigen value $\lambda$.
+        \end{definition}
+        
+        \begin{theorem}
+            Let $T: V \to V$ be a vector space and \textup{dim($V$)} = $n$.
+            $\lambda$ is an eigen value of $T$ if and only if $T - \lambda I$
+            is singular i.e, non-invertible.
+        \end{theorem}
+        
+        \subsubsection{Similar Matrices}
+            \begin{definition}
+                If there exists a non-singular matrix $P$ such that 
+                \[ A = P^{-1}BP \text{ or } B = PAP^{-1}, \] then A
+                and B are called similar matrices, that is $A \sim B$.
+            \end{definition}
+            \noindent For similar matrices their D.C.T.E.R.M's are same.
+            \begin{align*}
+                \text{D } &\to \text{Determinant} \\ 
+                \text{C } &\to \text{Characteristic Polynimial} \\ 
+                \text{T } &\to \text{Trace} \\ 
+                \text{E } &\to \text{Eigen values} \\ 
+                \text{R } &\to \text{Rank} \\ 
+                \text{M } &\to \text{Minimal polynomial}
+            \end{align*} 
+
+        \subsubsection{Diagonalisibility}
+            Let $T: V \to V$ be a linear transformation and $\lambda_1,
+            \lambda_2, \cdots, \lambda_n$ be its eigen values, then
+            \begin{itemize}
+                \item $T$ is diagonalizable if all of its eigen values
+                      are distinct.
+                \item A diagonal matrix is diagonalizable.
+                \item $T$ is diagonalizable if and onlt if $AM = GM$ for
+                      all eigen values of $T$
+                \item $T$ is diagonalizable if and only if 
+                $\displaystyle\sum_{i=1}^{n} E_{\lambda_i} = $dim($V$)
+            \end{itemize}
+        \noindent\textbf{Note: }
+        \begin{itemize}
+            \item AM $\le$ GM
+            \item $T(v) = \lambda v \implies (T(v) - \lambda v)(v) = 0$.
+                  Then number of linearly independent solutions of 
+                  $Ev = 0$ is equal to the rank of $E$ or nullity of
+                  the linear transformation $T - \lambda I$. 
+                  
+                  GM of $\lambda$ = nullity of $E$ = $n-r$, where
+                  $r$ is the rank of the matrix $E$ (representation
+                  of $T - \lambda I$)
+
+                  Let $A$ be the matrix representation w.r.t to any 
+                  basis. For sake of simplicity take A as the matrix 
+                  representation w.r.t the standard basis, i,e 
+                  $\left\{ 
+                      \begin{pmatrix*} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix*},
+                      \begin{pmatrix*} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix*},
+                      \cdots,
+                      \begin{pmatrix*} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix*}
+                  \right\}$, $[T]_{S.B} = A$.
+                  Eigen values of $A_{n\times n}$ are $\lambda_1, 
+                  \lambda_2, \cdots, \lambda_n$. If
+                      $$\text{AM of $\lambda_1$} = n$$
+                  then
+                      $$\text{GM of $\lambda_1$} = 1/2/\cdots/n$$
+            \item Range of $T$ is spanned by all the eigen vectors 
+                  corresponding to a non zero eigen value of $T$.
+            \item Null Space of $T$ is spanned by all eigen vectors 
+                  corresponding to a 0 eigen value of $T$.
+            \item $c$ is an eigen value of T if and only if $T - cI$
+                  is singular.
+            \item If A and B are two similar matrices then A and B
+                  have same characteristic polynomial.
+        \end{itemize}
 \end{document}
